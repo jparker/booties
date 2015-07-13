@@ -1,3 +1,5 @@
+# [![Gem Version](https://badge.fury.io/rb/booties.svg)](http://badge.fury.io/rb/booties)
+
 # Booties
 
 Booties provides a variety of helpers for using [Twitter
