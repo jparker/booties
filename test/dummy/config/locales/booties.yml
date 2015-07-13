@@ -1,0 +1,4 @@
+en:
+  booties:
+    modal:
+      dismiss_html: '<span class="glyphicon glyphicon-remove" aria-label="Dismiss"></span>'

@@ -10,7 +10,8 @@ module Booties
       @fade         = fade ? 'fade' : nil
     end
 
-    def_delegators :@view_context, :button_tag, :capture, :content_tag, :raw
+    def_delegators :@view_context, :button_tag, :capture, :content_tag,
+      :raw, :t, :translate
 
     def render(&block)
       content_tag :div, class: ['modal', @fade], id: @id do
@@ -32,8 +33,10 @@ module Booties
 
     # TODO: lookup header dismissal content in locale booties.button.close_html
     def header(&block)
+      dismissal = t :'booties.modal.dismiss_html',
+        default: [:'booties.modal.dismiss', raw('&times;')]
       content_tag :div, class: 'modal-header' do
-        dismiss(raw('&times;')) << title(&block)
+        dismiss(dismissal) << title(&block)
       end
     end
 

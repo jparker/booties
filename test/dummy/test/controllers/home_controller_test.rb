@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
@@ -27,7 +25,9 @@ class HomeControllerTest < ActionController::TestCase
       assert_select 'div.modal-dialog' do
         assert_select 'div.modal-content' do
           assert_select 'div.modal-header' do
-            assert_select 'button[class="close"][data-dismiss="modal"][type="button"]', text: '×'
+            assert_select 'button[class="close"][data-dismiss="modal"][type="button"]' do
+              assert_select 'span[class="glyphicon glyphicon-remove"]'
+            end
             assert_select 'h4.modal-title', 'Modal header'
           end
           assert_select 'div.modal-body' do
