@@ -1,4 +1,4 @@
-# [![Gem Version](https://badge.fury.io/rb/booties.svg)](http://badge.fury.io/rb/booties)
+# [![Gem Version](https://badge.fury.io/rb/booties.svg)](http://badge.fury.io/rb/booties) [![Build Status](https://travis-ci.org/jparker/booties.svg?branch=master)](https://travis-ci.org/jparker/booties)
 
 # Booties
 
