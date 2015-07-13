@@ -1,0 +1,16 @@
+<%= modal 'confirm' do |m| %>
+  <%= m.header do %>
+    Modal header
+  <% end %>
+  <%= m.body do %>
+    <p>Modal body</p>
+  <% end %>
+  <%= m.footer do %>
+    <%= m.dismiss class: 'btn btn-default' do %>
+      Dismiss
+    <% end %>
+    <%= link_to '#', class: 'btn btn-primary' do %>
+      Confirm
+    <% end %>
+  <% end %>
+<% end %>

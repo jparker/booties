@@ -1,0 +1,8 @@
+require 'autotest/suffix'
+
+if RUBY_PLATFORM.match /darwin/
+  begin
+    require 'autotest/fsevent'
+  rescue LoadError
+  end
+end

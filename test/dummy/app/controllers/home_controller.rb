@@ -1,4 +1,10 @@
 class HomeController < ApplicationController
-  def show
+  def breadcrumbs
+  end
+
+  def flag
+  end
+
+  def modal
   end
 end

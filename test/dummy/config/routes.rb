@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'home/show'
-
-  get 'breadcrumbs/show'
+  get 'home/breadcrumbs'
+  get 'home/flag'
+  get 'home/modal'
 
   mount Booties::Engine => "/booties"
 end
