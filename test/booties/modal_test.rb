@@ -7,6 +7,7 @@ module Booties
       @view_context = StubView.new
       @backend      = I18n.backend
       I18n.backend  = I18n::Backend::KeyValue.new({})
+      I18n.enforce_available_locales = false
     end
 
     def teardown
