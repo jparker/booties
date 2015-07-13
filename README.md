@@ -32,14 +32,55 @@ easy way to do this is to include the
 
 Booties provides helpers for a variety of Bootstrap components.
 
-### breadcrumbs
+### Breadcrumbs
 
 Booties::ApplicationHelper#breadcrumbs facilitates adding
 [breadcrumbs](http://getbootstrap.com/components/#breadcrumbs) to your pages.
 The breadcrumb content is saved as `:breadcrumbs` and can be rendered with
 `yield :breadcrumbs`.
 
-### flag
+```erb
+<%= breadcrumbs do %>
+  <li><%= link_to 'Books', :books %></li>
+  <li><%= link_to truncate(@book.title), [:edit, @book] %></li>
+  <li class="active">Edit</li>
+<% end %>
+```
+
+### Labels
 
 Booties::ApplicationHelper#flag provides Bootstrap
 [labels](http://getbootstrap.com/components/#labels).
+
+```erb
+<%= flag 'PENDING' %>
+<%= flag 'OPEN', context: :primary %>
+<%= flag 'CLOSED', context: :danger %>
+```
+
+### Modals
+
+Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
+[modals](http://getbootstrap.com/javascript/#modals).
+
+```erb
+<%= modal 'foo' do |m| %>
+  <%= m.header do %>
+    Nesciunt qui iste vel a.
+  <% end %>
+  <%= m.body do %>
+    <p>
+      Autem atque perferendis veritatis. Molestiae aliquid nam
+      reiciendis recusandae facere. Aut non nemo dicta.
+    </p>
+  <% end %>
+  <%= m.footer do %>
+    <%= m.dismiss class: 'btn btn-default' do %>
+      Dismiss
+    <% end %>
+    <%= link_to @widget, class: 'btn btn-danger', method: :delete do %>
+      Really Delete
+    <% end %>
+  <% end %>
+<% end %>
+```
