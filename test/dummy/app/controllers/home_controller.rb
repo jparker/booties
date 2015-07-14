@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  def badge
+  end
+
   def breadcrumbs
   end
 

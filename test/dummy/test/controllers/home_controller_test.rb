@@ -18,6 +18,14 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'span#baz.label.label-danger', 'baz'
   end
 
+  test 'page renders badges' do
+    get :badge
+
+    assert_select 'span.badge', 'foo'
+    assert_select 'span.badge.foo', 'bar'
+    assert_select 'span.badge#foo', 'bar'
+  end
+
   test 'page renders a modal' do
     get :modal
 

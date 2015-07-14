@@ -55,7 +55,7 @@ module Booties
     #   <span class="label label-primary">foo</span>
     #
     # Additional options passed in through +options+ will be passed to
-    # #content_tag to added as attributes to the span tag. The following:
+    # #content_tag to be added as attributes to the span tag. The following:
     #
     #   <%= flag 'foo', id: 'bar' %>
     #
@@ -63,7 +63,7 @@ module Booties
     #
     #   <span class="label label-default" id="bar">foo</span>
     #
-    # If +options+ includes a :class key, the contents will be merged with the
+    # If the +:class+ option is passed in the contents will be merged with the
     # classes required by Bootstrap labels. The following:
     #
     #   <%= flag 'foo', class: 'bar' %>
@@ -72,8 +72,50 @@ module Booties
     #
     #   <span class="label label-default bar">foo</span>
     def flag(content = nil, context: :default, **options, &block)
-      content ||= capture(&block)
+      content ||= capture &block
       classes   = %W[label label-#{context}]
+      classes  |= Array(options.delete(:class)).flat_map(&:split)
+      content_tag :span, content, class: classes, **options
+    end
+
+    ##
+    # Renders a span tag with the "badge" class. The content of the tag is
+    # passed in as +content+. The following:
+    #
+    #   <%= badge 'foo' %>
+    #
+    # will produce:
+    #
+    #   <span class="badge">foo</span>
+    #
+    # Alternatively, you can pass the content in as a block. The following:
+    #
+    #   <%= badge do %> foo <% end %>
+    #
+    # will produce:
+    #
+    #   <span class="badge">foo</span>
+    #
+    # Any options passed in through +options+ will be passed to #content_tag to
+    # be added as attributes to the span tag. The following:
+    #
+    #   <%= badge 'foo', id: 'bar' %>
+    #
+    # will produce:
+    #
+    #   <span class="badge" id="bar">foo</span>
+    #
+    # If the +:class+ option is passed in, the contents will be merged with the
+    # classes required by Bootstrap badges. The following:
+    #
+    #   <%= badge 'foo', class: 'bar' %>
+    #
+    # will produce:
+    #
+    #   <span class="badge bar">foo</span>
+    def badge(content = nil, **options, &block)
+      content ||= capture &block
+      classes   = ['badge']
       classes  |= Array(options.delete(:class)).flat_map(&:split)
       content_tag :span, content, class: classes, **options
     end

@@ -58,6 +58,15 @@ Booties::ApplicationHelper#flag provides Bootstrap
 <%= flag 'CLOSED', context: :danger %>
 ```
 
+### Badges
+
+Booties::ApplicationHelper#badge provides Bootstrap
+[Badges](http://getbootstrap.com/components/#badges).
+
+```erb
+<%= badge '42' %>
+```
+
 ### Modals
 
 Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
