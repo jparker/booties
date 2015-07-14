@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
   def modal
   end
+
+  def panel
+  end
 end

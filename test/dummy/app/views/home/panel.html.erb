@@ -1,0 +1,21 @@
+<%= panel do |p| %>
+  <%= p.heading do %>
+    <%= p.title do %>
+      Panel title
+    <% end %>
+  <% end %>
+  <%= p.body do %>
+    <p>Panel body</p>
+  <% end %>
+  <%= p.footer do %>
+    Panel footer
+  <% end %>
+<% end %>
+
+<%= panel context: :info do |p| %>
+  <%= p.heading 'Panel heading' %>
+  <%= p.body do %>
+    <p>Panel body</p>
+  <% end %>
+  <%= p.footer 'Panel footer' %>
+<% end %>

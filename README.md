@@ -35,7 +35,7 @@ Booties provides helpers for a variety of Bootstrap components.
 ### Breadcrumbs
 
 Booties::ApplicationHelper#breadcrumbs facilitates adding
-[breadcrumbs](http://getbootstrap.com/components/#breadcrumbs) to your pages.
+[Breadcrumbs](http://getbootstrap.com/components/#breadcrumbs) to your pages.
 The breadcrumb content is saved as `:breadcrumbs` and can be rendered with
 `yield :breadcrumbs`.
 
@@ -50,7 +50,7 @@ The breadcrumb content is saved as `:breadcrumbs` and can be rendered with
 ### Labels
 
 Booties::ApplicationHelper#flag provides Bootstrap
-[labels](http://getbootstrap.com/components/#labels).
+[Labels](http://getbootstrap.com/components/#labels).
 
 ```erb
 <%= flag 'PENDING' %>
@@ -61,7 +61,7 @@ Booties::ApplicationHelper#flag provides Bootstrap
 ### Modals
 
 Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
-[modals](http://getbootstrap.com/javascript/#modals).
+[Modals](http://getbootstrap.com/javascript/#modals).
 
 ```erb
 <%= modal 'foo' do |m| %>
@@ -70,8 +70,8 @@ Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
   <% end %>
   <%= m.body do %>
     <p>
-      Autem atque perferendis veritatis. Molestiae aliquid nam
-      reiciendis recusandae facere. Aut non nemo dicta.
+      Autem atque perferendis veritatis. Molestiae aliquid nam reiciendis
+      recusandae facere. Aut non nemo dicta.
     </p>
   <% end %>
   <%= m.footer do %>
@@ -81,6 +81,27 @@ Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
     <%= link_to @widget, class: 'btn btn-danger', method: :delete do %>
       Really Delete
     <% end %>
+  <% end %>
+<% end %>
+```
+### Panel
+
+Booties::ApplicationHelper#panel and Booties::Modal provide Bootstrap
+[Panels](http://getbootstrap.com/components/#panels).
+
+```erb
+<%= panel do |p| %>
+  <%= p.heading do %>
+    <%= p.title 'Consequatur quibusdam quia vel et sed in.' %>
+  <% end %>
+  <%= p.body do %>
+    <p>
+      Est fuga iste reiciendis laudantium dicta. Perspiciatis vero ut autem
+      quod vel modi. Ea error omnis aliquam aut est.
+    </p>
+  <% end %>
+  <%= p.footer do %>
+    Voluptatibus rerum et est quo dicta perspiciatis.
   <% end %>
 <% end %>
 ```

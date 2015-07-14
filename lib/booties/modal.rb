@@ -10,6 +10,8 @@ module Booties
     # the DOM ID of the modal element. By default, the modal will exhibit
     # fading behavior, but this can be disabled by setting +fade+ to a falsey
     # value.
+    #
+    # TODO: Pass additional arguments as attributes to top-level div.
     def initialize(view_context, id:, fade: true)
       @view_context = view_context
       @id           = id

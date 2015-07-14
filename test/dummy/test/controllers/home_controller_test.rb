@@ -41,4 +41,22 @@ class HomeControllerTest < ActionController::TestCase
       end
     end
   end
+
+  test 'page renders a panel' do
+    get :panel
+
+    assert_select 'div.panel.panel-default' do
+      assert_select 'div.panel-heading' do
+        assert_select 'h3.panel-title', 'Panel title'
+      end
+      assert_select 'div.panel-body', 'Panel body'
+      assert_select 'div.panel-footer', 'Panel footer'
+    end
+
+    assert_select 'div.panel.panel-info' do
+      assert_select 'div.panel-heading', 'Panel heading'
+      assert_select 'div.panel-body', 'Panel body'
+      assert_select 'div.panel-footer', 'Panel footer'
+    end
+  end
 end
