@@ -24,7 +24,8 @@ module Booties
     # object will be passed as a parameter to +block+.
     def render(&block)
       options = @options.dup
-      classes = %W[panel panel-#@context] | Array(options.delete(:class)).flat_map(&:split)
+      classes = Booties.merge_classes %W[panel panel-#@context],
+        options.delete(:class)
       content_tag :div, class: classes, **options do
         capture self, &block
       end

@@ -73,8 +73,8 @@ module Booties
     #   <span class="label label-default bar">foo</span>
     def flag(content = nil, context: :default, **options, &block)
       content ||= capture &block
-      classes   = %W[label label-#{context}]
-      classes  |= Array(options.delete(:class)).flat_map(&:split)
+      classes = Booties.merge_classes %W[label label-#{context}],
+        options.delete(:class)
       content_tag :span, content, class: classes, **options
     end
 
@@ -115,8 +115,7 @@ module Booties
     #   <span class="badge bar">foo</span>
     def badge(content = nil, **options, &block)
       content ||= capture &block
-      classes   = ['badge']
-      classes  |= Array(options.delete(:class)).flat_map(&:split)
+      classes = Booties.merge_classes ['badge'], options.delete(:class)
       content_tag :span, content, class: classes, **options
     end
 
