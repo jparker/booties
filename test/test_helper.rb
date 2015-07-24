@@ -9,7 +9,7 @@ require 'pry'
 require 'minitest/focus'
 require 'minitest/reporters'
 
-Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.

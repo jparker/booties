@@ -2,6 +2,7 @@ require 'forwardable'
 
 module Booties
   class Panel
+    include Utils
     extend Forwardable
 
     ##
@@ -24,7 +25,7 @@ module Booties
     # object will be passed as a parameter to +block+.
     def render(&block)
       options = @options.dup
-      classes = Booties.merge_classes %W[panel panel-#@context],
+      classes = merge_classes %W[panel panel-#@context],
         options.delete(:class)
       content_tag :div, class: classes, **options do
         capture self, &block
