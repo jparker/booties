@@ -9,7 +9,7 @@ class StubView
 
   def content_tag(tag, content, options = nil, &block)
     options, content = content, capture(&block) if options.nil?
-    "<#{tag} #{attributes options}>#{content}</#{tag}>"
+    "<#{[tag, *attributes(options)].join ' '}>#{content}</#{tag}>"
   end
 
   def raw(content)
@@ -25,12 +25,12 @@ class StubView
 
   def attributes(prefix = nil, **attrs)
     prefix = "#{prefix}-" if prefix
-    attrs.map { |key, value|
+    attrs.reject { |_, value| value.nil? }.flat_map do |key, value|
       if Hash === value
         attributes key, value
       else
-        "#{prefix}#{key}=\"#{Array(value).compact.join(' ')}\""
+        %Q{#{prefix}#{key}="#{Array(value).compact.join(' ')}"}
       end
-    }.join ' '
+    end
   end
 end
