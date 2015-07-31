@@ -1,4 +1,6 @@
 .bundle/
+/Gemfile.lock
+/gemfiles/*.gemfile.lock
 log/*.log
 pkg/
 test/dummy/db/*.sqlite3
