@@ -32,6 +32,15 @@ easy way to do this is to include the
 
 Booties provides helpers for a variety of Bootstrap components.
 
+### Badges
+
+Booties::ApplicationHelper#badge provides Bootstrap
+[Badges](http://getbootstrap.com/components/#badges).
+
+```erb
+<%= badge '42' %>
+```
+
 ### Breadcrumbs
 
 Booties::ApplicationHelper#breadcrumbs facilitates adding
@@ -56,15 +65,6 @@ Booties::ApplicationHelper#flag provides Bootstrap
 <%= flag 'PENDING' %>
 <%= flag 'OPEN', context: :primary %>
 <%= flag 'CLOSED', context: :danger %>
-```
-
-### Badges
-
-Booties::ApplicationHelper#badge provides Bootstrap
-[Badges](http://getbootstrap.com/components/#badges).
-
-```erb
-<%= badge '42' %>
 ```
 
 ### Modals
@@ -113,4 +113,25 @@ Booties::ApplicationHelper#panel and Booties::Modal provide Bootstrap
     Voluptatibus rerum et est quo dicta perspiciatis.
   <% end %>
 <% end %>
+```
+
+### Tooltips
+
+Booties::ApplicationHelper#tooltip provide Bootstrap
+[Tooltips](http://getbootstrap.com/javascript/#tooltips).
+
+```erb
+<%= tooltip title: 'This is a tooltip', placement: :bottom do %>
+  This has a tooltip.
+<% end %>
+```
+
+Tooltip behavior is opt-in. The helper will render the necessary tag, but you
+must activate them yourself. One way of doing this is to run the following
+Javascript snippet:
+
+```javascript
+$(function() {
+  $('[data-toggle="tooltip"]').tooltip();
+}
 ```
