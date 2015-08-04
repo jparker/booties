@@ -3,6 +3,39 @@ require 'minitest/mock'
 
 module Booties
   class ApplicationHelperTest < ActionView::TestCase
+    test '#tooltip renders span tag with given title' do
+      expected = '<span data-toggle="tooltip" title="foo bar">baz</span>'
+      assert_equal expected, tooltip(title: 'foo bar') { 'baz' }
+    end
+
+    test '#tooltip with bottom placement' do
+      expected = '<span data-toggle="tooltip" data-placement="bottom" title="foo bar">baz</span>'
+      assert_equal expected, tooltip(title: 'foo bar', placement: :bottom) { 'baz' }
+    end
+
+    test '#tooltip with right placement' do
+      expected = '<span data-toggle="tooltip" data-placement="right" title="foo bar">baz</span>'
+      assert_equal expected, tooltip(title: 'foo bar', placement: :right) { 'baz' }
+    end
+
+    test '#tooltip with left placement' do
+      expected = '<span data-toggle="tooltip" data-placement="left" title="foo bar">baz</span>'
+      assert_equal expected, tooltip(title: 'foo bar', placement: :left) { 'baz' }
+    end
+
+    test '#tooltip with unrecognized placement' do
+      e = assert_raises ArgumentError do
+        tooltip(title: 'foo bar', placement: :bogus) {}
+      end
+      assert_equal 'invalid placement: :bogus, valid placements are: :top, :bottom, :right, :left',
+        e.message
+    end
+
+    test '#tooltip accepts additional html attributes' do
+      expected = '<span data-toggle="tooltip" title="foo" class="bar">baz</span>'
+      assert_equal expected, tooltip(title: 'foo', class: 'bar') { 'baz' }
+    end
+
     test '#render_breadcrumbs renders ol tag with breadcrumb class' do
       expected = '<ol class="breadcrumb"></ol>'
       assert_equal expected, render_breadcrumbs {}

@@ -13,4 +13,7 @@ class HomeController < ApplicationController
 
   def panel
   end
+
+  def tooltip
+  end
 end

@@ -26,6 +26,15 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'span.badge#foo', 'bar'
   end
 
+  test 'page renders tooltips' do
+    get :tooltip
+
+    assert_select 'span[data-toggle="tooltip"][title="A tooltip"]',
+      'This has a tooltip.'
+    assert_select 'span[data-toggle="tooltip"][data-placement="left"][title="Another tooltip"]',
+      'This has another tooltip.'
+  end
+
   test 'page renders a modal' do
     get :modal
 
