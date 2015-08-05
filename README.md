@@ -34,7 +34,7 @@ Booties provides helpers for a variety of Bootstrap components.
 
 ### Badges
 
-Booties::ApplicationHelper#badge provides Bootstrap
+Booties::BadgeHelper#badge provides Bootstrap
 [Badges](http://getbootstrap.com/components/#badges).
 
 ```erb
@@ -69,7 +69,7 @@ Bootstrap [Buttons](http://getbootstrap.com/css/#buttons).
 
 ### Labels
 
-Booties::ApplicationHelper#flag provides Bootstrap
+Booties::FlagHelper#flag provides Bootstrap
 [Labels](http://getbootstrap.com/components/#labels).
 
 ```erb
@@ -80,7 +80,7 @@ Booties::ApplicationHelper#flag provides Bootstrap
 
 ### Modals
 
-Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
+Booties::ModalHelper#modal and Booties::Modal provide Bootstrap
 [Modals](http://getbootstrap.com/javascript/#modals).
 
 ```erb
@@ -106,7 +106,7 @@ Booties::ApplicationHelper#modal and Booties::Modal provide Bootstrap
 ```
 ### Panel
 
-Booties::ApplicationHelper#panel and Booties::Modal provide Bootstrap
+Booties::PanelHelper#panel and Booties::Modal provide Bootstrap
 [Panels](http://getbootstrap.com/components/#panels).
 
 ```erb
@@ -128,7 +128,7 @@ Booties::ApplicationHelper#panel and Booties::Modal provide Bootstrap
 
 ### Tooltips
 
-Booties::ApplicationHelper#tooltip provide Bootstrap
+Booties::TooltipHelper#tooltip provide Bootstrap
 [Tooltips](http://getbootstrap.com/javascript/#tooltips).
 
 ```erb
