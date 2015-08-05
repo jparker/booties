@@ -66,6 +66,7 @@ Bootstrap [Buttons](http://getbootstrap.com/css/#buttons).
 <%= btn_link_to destroy_user_session_path, class: 'btn-xs', context: :danger, method: :delete do %>
   Sign out
 <% end %>
+```
 
 ### Labels
 
