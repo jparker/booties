@@ -8,6 +8,8 @@ module Booties
     # Booties::Modal will be yielded as a parameter to the block (similar to
     # the way a FormBuilder works in Rails).
     #
+    # Example:
+    #
     #   <%= modal 'foo' do |m| %>
     #     <%= m.header do %>
     #       Nesciunt qui iste vel a.

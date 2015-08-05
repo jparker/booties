@@ -18,8 +18,8 @@ module Booties
     end
 
     test '#flag accepts content as a block' do
-      expected = '<span class="label label-default">content</span>'
-      assert_equal expected, flag { 'content' }
+      expected = '<span class="label label-default" id="foo">content</span>'
+      assert_equal expected, flag(id: 'foo') { 'content' }
     end
 
     test '#flag merges optional classes with label classes' do

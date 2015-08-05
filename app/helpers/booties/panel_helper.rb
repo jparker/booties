@@ -6,6 +6,8 @@ module Booties
     # in as a block. An instance of the Booties::Panel will be yielded as a
     # parameter to the block (similar to the way a FormBuilder works in Rails).
     #
+    # Example:
+    #
     #   <%= panel do |p| %>
     #     <%= p.heading do %>
     #       <%= p.title 'Consequatur quibusdam quia vel et sed in.' %>

@@ -12,31 +12,30 @@ module Booties
     # yourself. One way to do this is to include the following Javascript
     # snippet on the page:
     #
-    #   $(function() { $('[data-toggle="tooltip"]').tooltip() }
+    #   $(function() {
+    #     $('[data-toggle="tooltip"]').tooltip();
+    #   }
     #
     # Examples:
     #
     #   <%= tooltip title: 'This is a tooltip' do %>
     #     This has a tooltip.
     #   <% end %>
-    #
     #   <span data-toggle="tooltip" title="This is a tooltip">This has a tooltip.</span>
     #
     #   <%= tooltip title: 'This is a tooltip', placement: :bottom %>
     #     This has a tooltip.
     #   <% end %>
-    #
     #   <span data-toggle="tooltip" data-placement="bottom" title="This is a tooltip">This has a tooltip.</span>
     #
     #   <%= tooltip title: 'This is a tooltip', class: 'tooltip' %>
     #     This has a tooltip.
     #   <% end %>
-    #
     #   <span data-toggle="tooltip" title="This is a tooltip" class="tooltip">This has a tooltip.</span>
     def tooltip(title:, placement: nil, **options, &block)
-      unless [nil, :top, :bottom, :right, :left].include? placement
+      unless [nil, :top, :bottom, :left, :right].include? placement
         raise ArgumentError, "invalid placement: #{placement.inspect}," \
-          ' valid placements are: :top, :bottom, :right, :left'
+          ' valid placements are: :top, :bottom, :left, :right'
       end
 
       data = { toggle: 'tooltip' }

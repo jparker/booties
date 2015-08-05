@@ -16,5 +16,10 @@ module Booties
       expected = '<span class="badge foo">content</span>'
       assert_equal expected, badge('content', class: 'foo')
     end
+
+    test '#badge accepts content as a block' do
+      expected = '<span class="badge" id="foo">Bar</span>'
+      assert_equal expected, badge(id: 'foo') { 'Bar' }
+    end
   end
 end

@@ -34,7 +34,7 @@ module Booties
       e = assert_raises ArgumentError do
         tooltip(title: 'foo bar', placement: :bogus) {}
       end
-      assert_equal 'invalid placement: :bogus, valid placements are: :top, :bottom, :right, :left',
+      assert_equal 'invalid placement: :bogus, valid placements are: :top, :bottom, :left, :right',
         e.message
     end
 

@@ -4,15 +4,15 @@ module Booties
 
     ##
     # Renders an ol tag with the "breadcrumb" class and fills it with the
-    # content of the block. The following:
+    # content of the block.
+    #
+    # Example:
     #
     #   <% breadcrumbs do %>
     #     <li>Foo</li>
     #     <li class="active">Bar</li>
     #   <% end %>
     #   <%= yield :breadcrumb %>
-    #
-    # will produce:
     #
     #   <ol class="breadcrumb">
     #     <li>Foo</li>
