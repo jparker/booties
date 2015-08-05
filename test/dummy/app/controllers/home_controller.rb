@@ -5,6 +5,9 @@ class HomeController < ApplicationController
   def breadcrumbs
   end
 
+  def button
+  end
+
   def flag
   end
 

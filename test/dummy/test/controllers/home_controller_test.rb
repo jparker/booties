@@ -10,6 +10,13 @@ class HomeControllerTest < ActionController::TestCase
     end
   end
 
+  test 'page renders btn links' do
+    get :button
+
+    assert_select 'a.btn.btn-default', 'Foo'
+    assert_select 'a.btn.btn-danger.btn-xs[data-method="delete"]', 'Sign out'
+  end
+
   test 'page renders flags' do
     get :flag
 

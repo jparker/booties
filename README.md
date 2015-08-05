@@ -56,6 +56,17 @@ The breadcrumb content is saved as `:breadcrumbs` and can be rendered with
 <% end %>
 ```
 
+### Buttons
+
+Booties::ButtonHelper#btn_link_to renders links configured to be displayed as
+Bootstrap [Buttons](http://getbootstrap.com/css/#buttons).
+
+```erb
+<%= btn_link_to 'New', [:new, :widget] %>
+<%= btn_link_to destroy_user_session_path, class: 'btn-xs', context: :danger, method: :delete do %>
+  Sign out
+<% end %>
+
 ### Labels
 
 Booties::ApplicationHelper#flag provides Bootstrap
