@@ -28,6 +28,18 @@ module Booties
       assert_equal expected, modal.render {}
     end
 
+    def test_large_modal
+      modal = Modal.new @view_context, id: 'foo', size: :large
+      expected = /<div class="modal-dialog modal-lg">/
+      assert_match expected, modal.render {}
+    end
+
+    def test_small_modal
+      modal = Modal.new @view_context, id: 'foo', size: :small
+      expected = /<div class="modal-dialog modal-sm">/
+      assert_match expected, modal.render {}
+    end
+
     def test_dialog_renders_a_modal_dialog_with_a_modal_content
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-dialog"><div class="modal-content">' \

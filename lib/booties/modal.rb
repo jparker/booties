@@ -4,6 +4,8 @@ module Booties
   class Modal
     extend Forwardable
 
+    MODAL_SIZE = { small: 'modal-sm', large: 'modal-lg' }.freeze
+
     ##
     # Instantiates a new Modal. Several helper methods like #content_tag will
     # be delegated to +view_context+. The required keyword +id+ will be used as
@@ -12,10 +14,11 @@ module Booties
     # value.
     #
     # TODO: Pass additional arguments as attributes to top-level div.
-    def initialize(view_context, id:, fade: true)
+    def initialize(view_context, id:, fade: true, size: nil)
       @view_context = view_context
       @id           = id
       @fade         = fade ? 'fade' : nil
+      @size         = MODAL_SIZE[size]
     end
 
     def_delegators :@view_context, :button_tag, :capture, :content_tag,
@@ -35,7 +38,7 @@ module Booties
     # Renders the dialog section of the modal. +block+ is passed to #content to
     # fill in the content of the dialog.
     def dialog(&block)
-      content_tag :div, class: 'modal-dialog' do
+      content_tag :div, class: ['modal-dialog', @size] do
         content &block
       end
     end

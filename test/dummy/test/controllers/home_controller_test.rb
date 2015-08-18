@@ -46,7 +46,7 @@ class HomeControllerTest < ActionController::TestCase
     get :modal
 
     assert_select 'div.modal.fade#confirm' do
-      assert_select 'div.modal-dialog' do
+      assert_select 'div.modal-dialog.modal-lg' do
         assert_select 'div.modal-content' do
           assert_select 'div.modal-header' do
             assert_select 'button[class="close"][data-dismiss="modal"][type="button"]' do

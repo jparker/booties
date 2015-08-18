@@ -29,8 +29,8 @@ module Booties
     #       <% end %>
     #     <% end %>
     #   <% end %>
-    def modal(id, fade: true, with: Modal, &block)
-      with.new(self, id: id, fade: fade).render &block
+    def modal(id, fade: true, size: nil, with: Modal, &block)
+      with.new(self, id: id, fade: fade, size: size).render &block
     end
   end
 end
