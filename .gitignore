@@ -1,4 +1,4 @@
-.bundle/
+.bundle*/
 /Gemfile.lock
 /gemfiles/*.gemfile.lock
 log/*.log
