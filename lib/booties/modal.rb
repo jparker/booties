@@ -4,7 +4,8 @@ module Booties
   class Modal
     extend Forwardable
 
-    MODAL_SIZE = { small: 'modal-sm', large: 'modal-lg' }.freeze
+    DEFAULT_DISMISSAL = '&times;'.freeze
+    MODAL_SIZE        = { small: 'modal-sm', large: 'modal-lg' }.freeze
 
     ##
     # Instantiates a new Modal. Several helper methods like #content_tag will
@@ -54,17 +55,24 @@ module Booties
     end
 
     ##
-    # Renders the header section of a modal. +block+ is passed to #title to
-    # render the title. In addition to the title, a dismissal button will be
-    # rendered. The content of the dismissal button is localized. It will look
-    # for +booties.modal.dismiss_html+. If that translation does not exist it
-    # will look for +booties.modal.dismiss+. If that does not exist either, it
-    # will default to the HTML times entity +&times;+.
-    def header(&block)
-      dismissal = t :'booties.modal.dismiss_html',
-        default: [:'booties.modal.dismiss', raw('&times;')]
+    # Renders the header section of a modal.
+    #
+    # +block+ will be passed to #title to generate the title portion included
+    # within the header.
+    #
+    # If +close+ is truthy, a dismissal button will be rendered within the
+    # header as well. The default is +true+. The default dismissal is a
+    # +&times;+ symbol, but this can be customized by adding a translation for
+    # +booties.modal.dismiss_html+ or +booties.modal.dismiss+.
+    def header(close: true, &block)
       content_tag :div, class: 'modal-header' do
-        dismiss(dismissal) << title(&block)
+        if close
+          dismissal = t :'booties.modal.dismiss_html',
+            default: [:'booties.modal.dismiss', raw(DEFAULT_DISMISSAL)]
+          dismiss(dismissal) << title(&block)
+        else
+          title(&block)
+        end
       end
     end
 

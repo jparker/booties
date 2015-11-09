@@ -70,7 +70,14 @@ module Booties
       assert_equal expected, modal.header { 'content' }
     end
 
-    def test_header_translates_html_dismissals
+    def test_header_renders_a_modal_header_withouth_a_dismissal
+      modal = Modal.new @view_context, id: 'foo'
+      expected = '<div class="modal-header">' \
+        '<h4 class="modal-title">content</h4></div>'
+      assert_equal expected, modal.header(close: false) { 'content' }
+    end
+
+    def test_header_uses_html_dismissal
       icon = '<span class="glyphicon glyphicon-remove" aria-label="Dismiss"></span>'
       translations = {}
       I18n.backend = I18n::Backend::KeyValue.new translations
@@ -82,7 +89,7 @@ module Booties
       assert_match expected, modal.header { 'content' }
     end
 
-    def test_header_translates_non_html_dismissals
+    def test_header_falls_back_on_non_html_dismissal
       translations = {}
       I18n.backend = I18n::Backend::KeyValue.new translations
       I18n.backend.store_translations I18n.locale,
@@ -90,6 +97,15 @@ module Booties
 
       modal = Modal.new @view_context, id: 'foo'
       expected = %r{<button class="close" data-dismiss="modal" type="button">close</button>}
+      assert_match expected, modal.header { 'content' }
+    end
+
+    def test_header_falls_back_on_default_dismissal
+      translations = {}
+      I18n.backend = I18n::Backend::KeyValue.new translations
+
+      modal = Modal.new @view_context, id: 'foo'
+      expected = %r{<button class="close" data-dismiss="modal" type="button">&times;</button>}
       assert_match expected, modal.header { 'content' }
     end
 
