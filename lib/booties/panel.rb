@@ -7,12 +7,21 @@ module Booties
 
     ##
     # Instantiates a new Panel. Several helper methods like #content_tag will
-    # be delegated to +view_context+. The optional +context+ argument can be
-    # passed in to specify the panel context. +context+ defaults to +:default+.
+    # be delegated to +view_context+.
+    #
+    # The optional +context+ argument can be passed in to specify the panel
+    # context; otherwise, the context +:default+ is used.
+    #
+    # The default behavior is to use a +div+ tag for to top-level panel
+    # container, but you may specify a different tag using the +wrapper_tag+
+    # keyword. (There are no guarantees on whether or not other tags will work
+    # correctly with Bootstrap panels.
+    #
     # Any additional options will be included as attributes on the top-level
-    # panel div.
-    def initialize(view_context, context: :default, **options)
+    # panel container.
+    def initialize(view_context, context: :default, wrapper_tag: 'div', **options)
       @view_context = view_context
+      @wrapper_tag  = wrapper_tag
       @context      = context
       @options      = options
     end
@@ -25,9 +34,8 @@ module Booties
     # object will be passed as a parameter to +block+.
     def render(&block)
       options = @options.dup
-      classes = merge_classes %W[panel panel-#@context],
-        options.delete(:class)
-      content_tag :div, class: classes, **options do
+      classes = merge_classes %W[panel panel-#@context], options.delete(:class)
+      content_tag @wrapper_tag, class: classes, **options do
         capture self, &block
       end
     end

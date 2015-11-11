@@ -71,15 +71,17 @@ class HomeControllerTest < ActionController::TestCase
 
     assert_select 'div.panel.panel-default' do
       assert_select 'div.panel-heading' do
-        assert_select 'h3.panel-title', 'Panel title'
+        assert_select 'h3.panel-title', 'Default panel'
       end
       assert_select 'div.panel-body', 'Panel body'
       assert_select 'div.panel-footer', 'Panel footer'
     end
 
-    assert_select 'div.panel.panel-info' do
-      assert_select 'div.panel-heading', 'Panel heading'
-      assert_select 'div.panel-body', 'Panel body'
+    assert_select 'fieldset.panel.panel-info' do
+      assert_select 'div.panel-heading' do
+        assert_select 'h3.panel-title', 'Panel with custom container and context'
+      end
+      assert_select 'table tr td', 'A table instead of a body'
       assert_select 'div.panel-footer', 'Panel footer'
     end
   end

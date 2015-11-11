@@ -1,8 +1,6 @@
 <%= panel do |p| %>
   <%= p.heading do %>
-    <%= p.title do %>
-      Panel title
-    <% end %>
+    <%= p.title 'Default panel' %>
   <% end %>
   <%= p.body do %>
     <p>Panel body</p>
@@ -12,10 +10,16 @@
   <% end %>
 <% end %>
 
-<%= panel context: :info do |p| %>
-  <%= p.heading 'Panel heading' %>
-  <%= p.body do %>
-    <p>Panel body</p>
+<%= panel context: :info, wrapper_tag: 'fieldset' do |p| %>
+  <%= p.heading do %>
+    <%= p.title do %>
+      Panel with custom container and context
+    <% end %>
   <% end %>
+  <table>
+    <tr>
+      <td>A table instead of a body</td>
+    </tr>
+  </table>
   <%= p.footer 'Panel footer' %>
 <% end %>
