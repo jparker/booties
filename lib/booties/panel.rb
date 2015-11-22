@@ -23,6 +23,7 @@ module Booties
       @view_context = view_context
       @wrapper_tag  = wrapper_tag
       @context      = context
+      # TODO: pass options to #render instead of constructor
       @options      = options
     end
 

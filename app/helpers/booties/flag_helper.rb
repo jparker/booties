@@ -26,9 +26,10 @@ module Booties
     #
     #   <%= flag 'foo', class: 'bar' %>
     #   <span class="label label-default bar">foo</span>
-    def flag(content = nil, context: :default, **options, &block)
+    def flag(content = nil, context: :default, class: nil, **options, &block)
       content ||= capture &block
-      classes = merge_classes %W[label label-#{context}], options.delete(:class)
+      classes = merge_classes %W[label label-#{context}],
+        binding.local_variable_get(:class)
       content_tag :span, content, class: classes, **options
     end
   end

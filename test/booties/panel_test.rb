@@ -33,9 +33,7 @@ module Booties
     def test_render_yields_panel_to_block
       panel = Panel.new @view_context
       yielded_panel = nil
-      panel.render do |p|
-        yielded_panel = p
-      end
+      panel.render { |p| yielded_panel = p }
       assert_same panel, yielded_panel
     end
 

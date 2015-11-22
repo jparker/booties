@@ -39,7 +39,7 @@ module Booties
       end
 
       data = { toggle: 'tooltip' }
-      data[:placement] = placement if placement
+      data.update placement: placement if placement
 
       content_tag :span, data: data, title: title, **options, &block
     end
