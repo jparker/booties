@@ -3,11 +3,15 @@ require 'test_helper'
 module Booties
   class TestUtils < Minitest::Test
     def test_merge_classes_removes_duplicates
-      assert_equal %w[a b c], Utils.merge_classes(%w[a b], %w[b c])
+      assert_equal %w[a b c], Utils.merge_classes(['a', 'b'], ['b', 'c'])
     end
 
     def test_merge_classes_converts_string_arguments_to_arrays
       assert_equal %w[a b c], Utils.merge_classes('a b', 'b c')
+    end
+
+    def test_merge_classes_gracefully_handles_nil_elements_in_arrays
+      assert_equal %w[a b c], Utils.merge_classes(['a', nil], ['b', 'c'])
     end
 
     def test_merge_classes_available_as_instance_method_when_utils_is_included
