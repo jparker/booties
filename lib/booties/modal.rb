@@ -2,6 +2,7 @@ require 'forwardable'
 
 module Booties
   class Modal
+    include Utils
     extend Forwardable
 
     DEFAULT_DISMISSAL = '&times;'.freeze
@@ -13,8 +14,6 @@ module Booties
     # the DOM ID of the modal element. By default, the modal will exhibit
     # fading behavior, but this can be disabled by setting +fade+ to a falsey
     # value.
-    #
-    # TODO: Pass additional arguments as attributes to top-level div.
     def initialize(view_context, id:, fade: true, size: nil)
       @view_context = view_context
       @id           = id
@@ -29,8 +28,9 @@ module Booties
     # Renders the top-level div for the modal dialog. +block+ is passed to
     # #dialog to fill in the content of the modal. +@id+ is used as the DOM ID
     # of the modal. +@fade+ is used to include or exclude fading behavior.
-    def render(&block)
-      content_tag :div, class: ['modal', @fade], id: @id do
+    def render(**options, &block)
+      classes = merge_classes ['modal', @fade], options.delete(:class)
+      content_tag :div, class: classes, id: @id, **options do
         dialog &block
       end
     end
@@ -64,6 +64,8 @@ module Booties
     # header as well. The default is +true+. The default dismissal is a
     # +&times;+ symbol, but this can be customized by adding a translation for
     # +booties.modal.dismiss_html+ or +booties.modal.dismiss+.
+
+    # TODO: rename +close+ option to +dismissible+?
     def header(close: true, &block)
       content_tag :div, class: 'modal-header' do
         if close

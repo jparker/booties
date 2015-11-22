@@ -28,6 +28,12 @@ module Booties
       assert_equal expected, modal.render {}
     end
 
+    def test_render_passes_misc_options_to_outer_container
+      modal = Modal.new @view_context, id: 'foo'
+      expected = /<div class="modal fade foo" id="foo" data-bar="baz">/
+      assert_match expected, modal.render(class: 'foo', data: { bar: 'baz' }) {}
+    end
+
     def test_large_modal
       modal = Modal.new @view_context, id: 'foo', size: :large
       expected = /<div class="modal-dialog modal-lg">/
