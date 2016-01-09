@@ -21,5 +21,10 @@ module Booties
       expected = '<span class="badge" id="foo">Bar</span>'
       assert_equal expected, badge(id: 'foo') { 'Bar' }
     end
+
+    test '#badge handles nil content when no block is given' do
+      expected = '<span class="badge"></span>'
+      assert_equal expected, badge(nil)
+    end
   end
 end

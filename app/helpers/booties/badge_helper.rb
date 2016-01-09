@@ -23,7 +23,7 @@ module Booties
     #   <%= badge 'foo', class: 'bar' %>
     #   <span class="badge bar">foo</span>
     def badge(content = nil, class: nil, **options, &block)
-      content ||= capture &block
+      content ||= capture &block if block_given?
       classes = merge_classes ['badge'], binding.local_variable_get(:class)
       content_tag :span, content, class: classes, **options
     end
