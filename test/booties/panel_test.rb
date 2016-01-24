@@ -47,6 +47,11 @@ module Booties
       assert_equal expected, panel.heading { 'content' }
     end
 
+    def test_panel_heading_with_optional_arguments
+      expected = '<div class="panel-heading foo" id="bar"></div>'
+      assert_equal expected, panel.heading('', class: 'foo', id: 'bar')
+    end
+
     def test_panel_title
       expected = '<h3 class="panel-title">content</h3>'
       assert_equal expected, panel.title('content')
@@ -55,6 +60,11 @@ module Booties
     def test_panel_title_accepts_block
       expected = '<h3 class="panel-title">content</h3>'
       assert_equal expected, panel.title { 'content' }
+    end
+
+    def test_panel_title_with_optional_arguments
+      expected = '<h3 class="panel-title foo" id="bar"></h3>'
+      assert_equal expected, panel.title('', class: 'foo', id: 'bar')
     end
 
     def test_panel_body
@@ -67,6 +77,11 @@ module Booties
       assert_equal expected, panel.body { 'content' }
     end
 
+    def test_panel_body_with_optional_arguments
+      expected = '<div class="panel-body foo" id="bar"></div>'
+      assert_equal expected, panel.body('', class: 'foo', id: 'bar')
+    end
+
     def test_panel_footer
       expected = '<div class="panel-footer">content</div>'
       assert_equal expected, panel.footer('content')
@@ -75,6 +90,11 @@ module Booties
     def test_panel_footer_accepts_block
       expected = '<div class="panel-footer">content</div>'
       assert_equal expected, panel.footer { 'content' }
+    end
+
+    def test_panel_footer_with_optional_arguments
+      expected = '<div class="panel-footer foo" id="bar"></div>'
+      assert_equal expected, panel.footer('', class: 'foo', id: 'bar')
     end
 
     private

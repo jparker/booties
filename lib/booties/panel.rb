@@ -5,6 +5,13 @@ module Booties
     include Utils
     extend Forwardable
 
+    CSS_CLASSES = {
+      heading: 'panel-heading'.freeze,
+      title:   'panel-title'.freeze,
+      body:    'panel-body'.freeze,
+      footer:  'panel-footer'.freeze,
+    }
+
     ##
     # Instantiates a new Panel. Several helper methods like #content_tag will
     # be delegated to +view_context+.
@@ -43,34 +50,50 @@ module Booties
 
     ##
     # Renders the panel heading. The content of the heading can be passed in
-    # through the +content+ parameter or as a block.
-    def heading(content = nil, &block)
+    # through the +content+ parameter or as a block. If +class+ is given, it
+    # will be merged with the required panel heading class. Additional keyword
+    # arguments will be passed as an options Hash to #content_tag.
+    def heading(content = nil, class: nil, **options, &block)
       content ||= capture &block
-      content_tag :div, content, class: 'panel-heading'
+      classes   = merge_classes CSS_CLASSES[:heading],
+        binding.local_variable_get(:class)
+      content_tag :div, content, class: classes, **options
     end
 
     ##
     # Renders the panel title. The content of the title can be passed in
-    # through the +content+ paramter or as a block.
-    def title(content = nil, &block)
+    # through the +content+ paramter or as a block. If +class+ is given, it
+    # will be merged with the required panel title class. Additional keyword
+    # arguments will be passed as an options Hash to #content_tag.
+    def title(content = nil, class: nil, **options, &block)
       content ||= capture &block
-      content_tag :h3, content, class: 'panel-title'
+      classes   = merge_classes CSS_CLASSES[:title],
+        binding.local_variable_get(:class)
+      content_tag :h3, content, class: classes, **options
     end
 
     ##
     # Renders the panel body. The content of the body can be passed in through
-    # the +content+ parameter or as a block.
-    def body(content = nil, &block)
+    # the +content+ parameter or as a block. If +class+ is given, it will be
+    # merged with the required panel body class. Additional keyword arguments
+    # will be passed as an options Hash to #content_tag.
+    def body(content = nil, class: nil, **options, &block)
       content ||= capture &block
-      content_tag :div, content, class: 'panel-body'
+      classes   = merge_classes CSS_CLASSES[:body],
+        binding.local_variable_get(:class)
+      content_tag :div, content, class: classes, **options
     end
 
     ##
     # Renders the panel footer. The content of the footer can be passed in
-    # through the +content+ parameter or as a block.
-    def footer(content = nil, &block)
+    # through the +content+ parameter or as a block. If +class+ is given, it
+    # will be merged with the required panel footer class. Additional keyword
+    # arguments will be passed as an options Hash to #content_tag.
+    def footer(content = nil, class: nil, **options, &block)
       content ||= capture &block
-      content_tag :div, content, class: 'panel-footer'
+      classes   = merge_classes CSS_CLASSES[:footer],
+        binding.local_variable_get(:class)
+      content_tag :div, content, class: classes, **options
     end
   end
 end
