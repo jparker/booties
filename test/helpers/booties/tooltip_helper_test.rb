@@ -38,6 +38,13 @@ module Booties
         e.message
     end
 
+    test '#tooltip renders tooltip using alternative wrapper tag' do
+      expected = content_tag :abbr, 'baz',
+        data: { toggle: 'tooltip' }, title: 'foo'
+
+      assert_equal expected, tooltip(title: 'foo', wrapper_tag: :abbr) { 'baz' }
+    end
+
     test '#tooltip accepts additional html attributes' do
       expected = content_tag :span, 'baz',
         data: { toggle: 'tooltip' }, title: 'foo', class: 'bar'
