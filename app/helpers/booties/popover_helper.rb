@@ -27,7 +27,7 @@ module Booties
     # snippet on the page:
     #
     #   $(function() {
-    #     $('[data-toggler="popover"]').popover();
+    #     $('[data-toggle="popover"]').popover();
     #   }
     #
     # Examples:
