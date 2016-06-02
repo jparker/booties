@@ -23,7 +23,7 @@ module Booties
     #     <% end %>
     #   <% end %>
     def panel(with: Panel, **options, &block)
-      with.new(self, **options).render &block
+      with.new(self, **options).render(&block)
     end
   end
 end

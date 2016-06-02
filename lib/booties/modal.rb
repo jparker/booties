@@ -31,7 +31,7 @@ module Booties
     def render(**options, &block)
       classes = merge_classes ['modal', @fade], options.delete(:class)
       content_tag :div, class: classes, id: @id, **options do
-        dialog &block
+        dialog(&block)
       end
     end
 
@@ -40,7 +40,7 @@ module Booties
     # fill in the content of the dialog.
     def dialog(&block)
       content_tag :div, class: ['modal-dialog', @size] do
-        content &block
+        content(&block)
       end
     end
 
@@ -98,7 +98,7 @@ module Booties
     #
     # #title is called automatically from #header.
     def title(content = nil, &block)
-      content ||= capture &block
+      content ||= capture(&block)
       content_tag :h4, content, class: 'modal-title'
     end
 
@@ -108,7 +108,7 @@ module Booties
     # +block+. Additional HTML attributes for the button can be passed in
     # through +options+.
     def dismiss(content = nil, **options, &block)
-      content ||= capture &block
+      content ||= capture(&block)
       options[:class] ||= 'close'
       options.update data: { dismiss: 'modal' }, type: 'button'
       button_tag content, options

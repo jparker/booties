@@ -54,7 +54,7 @@ module Booties
     # will be merged with the required panel heading class. Additional keyword
     # arguments will be passed as an options Hash to #content_tag.
     def heading(content = nil, class: nil, **options, &block)
-      content ||= capture &block
+      content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:heading],
         binding.local_variable_get(:class)
       content_tag :div, content, class: classes, **options
@@ -66,7 +66,7 @@ module Booties
     # will be merged with the required panel title class. Additional keyword
     # arguments will be passed as an options Hash to #content_tag.
     def title(content = nil, class: nil, **options, &block)
-      content ||= capture &block
+      content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:title],
         binding.local_variable_get(:class)
       content_tag :h3, content, class: classes, **options
@@ -78,7 +78,7 @@ module Booties
     # merged with the required panel body class. Additional keyword arguments
     # will be passed as an options Hash to #content_tag.
     def body(content = nil, class: nil, **options, &block)
-      content ||= capture &block
+      content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:body],
         binding.local_variable_get(:class)
       content_tag :div, content, class: classes, **options
@@ -90,7 +90,7 @@ module Booties
     # will be merged with the required panel footer class. Additional keyword
     # arguments will be passed as an options Hash to #content_tag.
     def footer(content = nil, class: nil, **options, &block)
-      content ||= capture &block
+      content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:footer],
         binding.local_variable_get(:class)
       content_tag :div, content, class: classes, **options

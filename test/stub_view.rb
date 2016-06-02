@@ -4,7 +4,7 @@ class StubView
   end
 
   def capture(*args, &block)
-    block.call *args
+    block.call(*args)
   end
 
   def content_tag(tag, content, options = nil, &block)
@@ -17,7 +17,7 @@ class StubView
   end
 
   def translate(*args)
-    I18n.translate *args
+    I18n.translate(*args)
   end
   alias t translate
 

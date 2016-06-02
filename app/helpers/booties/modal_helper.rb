@@ -30,7 +30,7 @@ module Booties
     #     <% end %>
     #   <% end %>
     def modal(id, fade: true, size: nil, with: Modal, **options, &block)
-      with.new(self, id: id, fade: fade, size: size).render **options, &block
+      with.new(self, id: id, fade: fade, size: size).render(**options, &block)
     end
   end
 end
