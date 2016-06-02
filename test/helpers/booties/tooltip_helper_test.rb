@@ -34,8 +34,8 @@ module Booties
       e = assert_raises ArgumentError do
         tooltip(title: 'foo bar', placement: :bogus) {}
       end
-      assert_equal 'invalid placement: :bogus, valid placements are: :top, :bottom, :left, :right',
-        e.message
+      assert_equal 'invalid placement: :bogus, ' \
+        'valid placements are :left, :right, :top, :bottom', e.message
     end
 
     test '#tooltip renders tooltip using alternative wrapper tag' do

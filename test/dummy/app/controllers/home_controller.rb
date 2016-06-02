@@ -19,4 +19,7 @@ class HomeController < ApplicationController
 
   def tooltip
   end
+
+  def popover
+  end
 end

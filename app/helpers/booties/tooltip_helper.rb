@@ -1,5 +1,7 @@
 module Booties
   module TooltipHelper
+    include Utils
+
     ##
     # Wraps the content provided by +block+ with a Bootstrap tooltip. The text
     # of the tooltip is passed in through the required +title+ parameter.
@@ -39,13 +41,12 @@ module Booties
     #   <% end %>
     #   <span data-toggle="tooltip" title="This is a tooltip" class="tooltip">This has a tooltip.</span>
     def tooltip(title:, placement: nil, wrapper_tag: :span, **options, &block)
-      unless [nil, :top, :bottom, :left, :right].include? placement
-        raise ArgumentError, "invalid placement: #{placement.inspect}," \
-          ' valid placements are: :top, :bottom, :left, :right'
-      end
+      data = { toggle: 'tooltip', }
 
-      data = { toggle: 'tooltip' }
-      data.update placement: placement if placement
+      if placement
+        validate_placement! placement
+        data[:placement] = placement
+      end
 
       content_tag wrapper_tag, data: data, title: title, **options, &block
     end

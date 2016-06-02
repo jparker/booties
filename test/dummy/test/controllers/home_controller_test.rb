@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
-  test 'page renders breadcrumbs' do
+  def test_page_renders_breadcrumbs
     get :breadcrumbs
 
     assert_select 'ol.breadcrumb' do
@@ -10,14 +10,14 @@ class HomeControllerTest < ActionController::TestCase
     end
   end
 
-  test 'page renders btn links' do
+  def test_page_renders_btn_links
     get :button
 
     assert_select 'a.btn.btn-default', 'Foo'
     assert_select 'a.btn.btn-danger.btn-xs[data-method="delete"]', 'Sign out'
   end
 
-  test 'page renders flags' do
+  def test_page_renders_flags
     get :flag
 
     assert_select 'span.label.label-default', 'foo'
@@ -25,7 +25,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'span#baz.label.label-danger', 'baz'
   end
 
-  test 'page renders badges' do
+  def test_page_renders_badges
     get :badge
 
     assert_select 'span.badge', 'foo'
@@ -33,7 +33,7 @@ class HomeControllerTest < ActionController::TestCase
     assert_select 'span.badge#foo', 'bar'
   end
 
-  test 'page renders tooltips' do
+  def test_page_renders_tooltips
     get :tooltip
 
     assert_select 'span[data-toggle="tooltip"][title="A tooltip"]',
@@ -42,7 +42,27 @@ class HomeControllerTest < ActionController::TestCase
       'This has another tooltip.'
   end
 
-  test 'page renders a modal' do
+  def test_page_renders_popovers
+    get :popover
+
+    assert_select 'button', text: 'Button text' do
+      assert_select '[type="button"]'
+      assert_select '[data-toggle="popover"]'
+      assert_select '[data-content="Lorem ipsum dolor sit amet"]'
+    end
+
+    assert_select 'a', text: 'Link text' do
+      assert_select '[role="button"]'
+      assert_select '[data-container="body"]'
+      assert_select '[data-toggle="popover"]'
+      assert_select '[data-placement="right"]'
+      assert_select '[data-trigger="focus"]'
+      assert_select '[title="This is the title"]'
+      assert_select '[data-content="Lorem ipsum dolor sit amet"]'
+    end
+  end
+
+  def test_page_renders_a_modal
     get :modal
 
     assert_select 'div.modal.fade#confirm' do
@@ -66,7 +86,7 @@ class HomeControllerTest < ActionController::TestCase
     end
   end
 
-  test 'page renders a panel' do
+  def test_page_renders_a_panel
     get :panel
 
     assert_select 'div.panel.panel-default' do

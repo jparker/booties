@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'home/modal'
   get 'home/panel'
   get 'home/tooltip'
+  get 'home/popover'
 
   mount Booties::Engine => "/booties"
 end

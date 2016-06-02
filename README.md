@@ -129,7 +129,7 @@ Booties::PanelHelper#panel and Booties::Modal provide Bootstrap
 
 ### Tooltips
 
-Booties::TooltipHelper#tooltip provide Bootstrap
+Booties::TooltipHelper#tooltip provides Bootstrap
 [Tooltips](http://getbootstrap.com/javascript/#tooltips).
 
 ```erb
@@ -145,5 +145,26 @@ Javascript snippet:
 ```javascript
 $(function() {
   $('[data-toggle="tooltip"]').tooltip();
+}
+```
+
+### Popovers
+
+Booties::PopoverHelper#popover provides Bootstrap
+[Popovers](http://getbootstrap.com/javascript/#popovers).
+
+```erb
+<%= popover content: 'Lorem ipsum dolor sit amet.', title: 'Lorem ipsum', class: 'btn btn-default' do %>
+  Button text
+<% end %>
+```
+
+Popover behavior is opt-in. The helper will render the necessary tag, but you
+must activate them yourself. One way of doing this is to run the following
+Javascript snippet:
+
+```javascript
+$(function() {
+  $('[data-toggle="popover"]').popover();
 }
 ```
