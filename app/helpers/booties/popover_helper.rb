@@ -48,7 +48,7 @@ module Booties
       end
 
       if trigger
-        data[:container] = 'body'
+        html_options[:tabindex] ||= 10
         data[:trigger]   = 'focus'
       end
 

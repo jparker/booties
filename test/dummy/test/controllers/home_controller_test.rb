@@ -53,7 +53,6 @@ class HomeControllerTest < ActionController::TestCase
 
     assert_select 'a', text: 'Link text' do
       assert_select '[role="button"]'
-      assert_select '[data-container="body"]'
       assert_select '[data-toggle="popover"]'
       assert_select '[data-placement="right"]'
       assert_select '[data-trigger="focus"]'

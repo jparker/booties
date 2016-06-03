@@ -52,10 +52,20 @@ module Booties
 
     def test_popover_with_trigger
       expected = content_tag :a, 'Link text',
+        tabindex: 10,
         role: 'button',
-        data: { toggle: 'popover', content: CONTENT, container: 'body', trigger: 'focus', }
+        data: { toggle: 'popover', content: CONTENT, trigger: 'focus', }
       assert_equal expected,
         popover('Link text', content: CONTENT, trigger: :focus)
+    end
+
+    def test_popover_with_custom_tabindex
+      expected = content_tag :a, 'Link text',
+        tabindex: 42,
+        role: 'button',
+        data: { toggle: 'popover', content: CONTENT, trigger: 'focus', }
+      assert_equal expected,
+        popover('Link text', content: CONTENT, trigger: :focus, tabindex: 42)
     end
 
     def test_popover_with_tag
