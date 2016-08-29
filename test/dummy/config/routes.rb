@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
+  get 'samples/badges'
 
-  get 'home/badge'
-  get 'home/breadcrumbs'
-  get 'home/button'
-  get 'home/flag'
-  get 'home/modal'
-  get 'home/panel'
-  get 'home/tooltip'
-  get 'home/popover'
+  get 'samples/breadcrumbs'
+
+  get 'samples/buttons'
+
+  get 'samples/flags'
+
+  get 'samples/modals'
+
+  get 'samples/panels'
+
+  get 'samples/popovers'
+
+  get 'samples/tooltips'
 
   mount Booties::Engine => "/booties"
 end

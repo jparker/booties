@@ -3,7 +3,7 @@ require 'minitest/mock'
 
 module Booties
   class ModalHelperTest < ActionView::TestCase
-    test '#modal instantiates a new Modal and calls render' do
+    def test__modal_instantiates_a_new_Modal_and_calls_render
       modal_class = Minitest::Mock.new
       modal_instance = Minitest::Mock.new
 
@@ -17,7 +17,7 @@ module Booties
       modal_instance.verify
     end
 
-    test '#modal passes keyword arguments on to Modal constructor' do
+    def test__modal_passes_keyword_arguments_on_to_Modal_constructor
       modal_class = Minitest::Mock.new
       modal_instance = Minitest::Mock.new
 
@@ -31,7 +31,7 @@ module Booties
       modal_instance.verify
     end
 
-    test '#modal passes optional arguments on to Modal#render' do
+    def test__modal_passes_optional_arguments_on_to_Modal_render
       modal_class = Minitest::Mock.new
       modal_instance = Minitest::Mock.new
 

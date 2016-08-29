@@ -14,12 +14,13 @@ Gem::Specification.new do |s|
   s.description = 'Rails view helpers for Twitter Bootstrap.'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
 
   s.required_ruby_version = '>= 2.1'
 
-  s.add_dependency 'rails', '~> 4.1'
+  #s.add_dependency "rails", "~> 5.0.0", ">= 5.0.0.1"
+  s.add_dependency 'rails', '>= 4.1', '< 5.1'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'minitest', '~> 5.7'

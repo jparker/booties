@@ -2,27 +2,27 @@ require 'test_helper'
 
 module Booties
   class BadgeHelperTest < ActionView::TestCase
-    test '#badge renders span tag with badge class' do
+    def test__badge_renders_span_tag_with_badge_class
       expected = '<span class="badge">content</span>'
       assert_equal expected, badge('content')
     end
 
-    test '#badge passes miscellaneous options through to #content_tag' do
+    def test__badge_passes_miscellaneous_options_through_to__content_tag
       expected = '<span class="badge" id="foo">content</span>'
       assert_equal expected, badge('content', id: 'foo')
     end
 
-    test '#badge merges optional classes with badge class' do
+    def test__badge_merges_optional_classes_with_badge_class
       expected = '<span class="badge foo">content</span>'
       assert_equal expected, badge('content', class: 'foo')
     end
 
-    test '#badge accepts content as a block' do
+    def test__badge_accepts_content_as_a_block
       expected = '<span class="badge" id="foo">Bar</span>'
       assert_equal expected, badge(id: 'foo') { 'Bar' }
     end
 
-    test '#badge handles nil content when no block is given' do
+    def test__badge_handles_nil_content_when_no_block_is_given
       expected = '<span class="badge"></span>'
       assert_equal expected, badge(nil)
     end

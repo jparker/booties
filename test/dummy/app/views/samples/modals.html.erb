@@ -1,0 +1,12 @@
+<%= modal 'foo', size: :large do |m| %>
+  <%= m.header do %>
+    Title
+  <% end %>
+  <%= m.body do %>
+    <p>Body</p>
+  <% end %>
+  <%= m.footer do %>
+    <%= m.dismiss 'Dismiss', class: 'btn btn-default' %>
+    <%= btn_link_to 'Confirm', '/bar', context: :primary %>
+  <% end %>
+<% end %>

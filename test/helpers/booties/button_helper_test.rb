@@ -2,22 +2,22 @@ require 'test_helper'
 
 module Booties
   class ButtonHelperTest < ActionView::TestCase
-    test '#btn_link_to renders link with btn classes' do
+    def test__btn_link_to_renders_link_with_btn_classes
       expected = link_to 'Foo', '/foo', class: 'btn btn-default'
       assert_equal expected, btn_link_to('Foo', '/foo')
     end
 
-    test '#btn_link_to context can be overridden' do
+    def test__btn_link_to_context_can_be_overridden
       expected = link_to 'Foo', '/foo', class: 'btn btn-primary'
       assert_equal expected, btn_link_to('Foo', '/foo', context: :primary)
     end
 
-    test '#btn_link_to passes extra as html options to #link_to' do
+    def test__btn_link_to_passes_extra_as_html_options_to__link_to
       expected = link_to 'Foo', '/foo', class: 'btn btn-default btn-xs', method: :delete
       assert_equal expected, btn_link_to('Foo', '/foo', class: 'btn-xs', method: :delete)
     end
 
-    test '#btn_link_to with a block' do
+    def test__btn_link_to_with_a_block
       expected = link_to 'Foo', '/foo', class: 'btn btn-default btn-xs'
       assert_equal expected, btn_link_to('/foo', class: 'btn-xs') { 'Foo' }
     end

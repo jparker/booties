@@ -2,8 +2,11 @@
 
 # Booties
 
-Booties provides a variety of helpers for using [Twitter
-Bootstrap](http://getbootstrap.com/) within a Rails application.
+Booties provides a variety of helpers for using
+[Twitter Bootstrap](http://getbootstrap.com/) within a Rails application.
+
+NB: This is the Rails 5 development branch. There will likely be no visible
+change in syntax or behavior, but some of the tests had to be rewritten.
 
 ## Installation
 
@@ -14,8 +17,9 @@ gem 'booties'
 ```
 
 And then execute:
-
-    $ bundle
+```bash
+$ bundle
+```
 
 Make the helpers available throughout your application by adding the following
 line to your ApplicationController:
@@ -24,13 +28,15 @@ line to your ApplicationController:
 helper Booties::Engine.helpers
 ```
 
-Finally, you need to make sure you include Bootstrap in your application. One
-easy way to do this is to include the
-[bootstrap-sass](https://github.com/twbs/bootstrap-sass) gem.
+Finally, you need to make sure you include Bootstrap in your application. The
+way you accomplish this is left up to you, but one easy way to do this is to
+include the [bootstrap-sass](https://github.com/twbs/bootstrap-sass) gem.
 
 ## Helpers
 
-Booties provides helpers for a variety of Bootstrap components.
+Booties provides helpers for a variety of Bootstrap components. Below is an
+overview of the available helpers. Examples of how to use them can be found in
+<tt>test/dummy/app/views/samples</tt>.
 
 ### Badges
 
@@ -63,7 +69,7 @@ Bootstrap [Buttons](http://getbootstrap.com/css/#buttons).
 
 ```erb
 <%= btn_link_to 'New', [:new, :widget] %>
-<%= btn_link_to destroy_user_session_path, class: 'btn-xs', context: :danger, method: :delete do %>
+<%= btn_link_to sign_out_path, class: 'btn-xs', context: :danger, method: :delete do %>
   Sign out
 <% end %>
 ```
@@ -154,7 +160,7 @@ Booties::PopoverHelper#popover provides Bootstrap
 [Popovers](http://getbootstrap.com/javascript/#popovers).
 
 ```erb
-<%= popover content: 'Lorem ipsum dolor sit amet.', title: 'Lorem ipsum', class: 'btn btn-default' do %>
+<%= popover content: 'Lorem ipsum dolor sit amet.', class: 'btn btn-default' do %>
   Button text
 <% end %>
 ```
@@ -168,3 +174,6 @@ $(function() {
   $('[data-toggle="popover"]').popover();
 }
 ```
+
+## License
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

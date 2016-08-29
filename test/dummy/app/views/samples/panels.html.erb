@@ -1,0 +1,14 @@
+<%= panel do |p| %>
+  <%= p.heading p.title 'Title' %>
+  <%= p.body do %>
+    <p>Body</p>
+  <% end %>
+  <%= p.footer 'Footer' %>
+<% end %>
+
+<%= panel context: :info do |p| %>
+  <%= p.heading p.title 'Title' %>
+  <table>
+    <caption>Use table instead of .panel-body</caption>
+  </table>
+<% end %>
