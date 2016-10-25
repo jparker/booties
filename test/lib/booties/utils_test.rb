@@ -2,19 +2,35 @@ require 'test_helper'
 
 module Booties
   class TestUtils < Minitest::Test
-    def test_merge_classes_removes_duplicates
-      assert_equal %w[a b c], Utils.merge_classes(['a', 'b'], ['b', 'c'])
+    def test_merge_classes_with_arrays
+      actual = Utils.merge_classes ['a', 'b'], ['b', 'c']
+      assert_equal ['a', 'b', 'c'], actual
     end
 
-    def test_merge_classes_converts_string_arguments_to_arrays
-      assert_equal %w[a b c], Utils.merge_classes('a b', 'b c')
+    def test_merge_classes_with_strings
+      actual = Utils.merge_classes 'a b', 'b c'
+      assert_equal ['a', 'b', 'c'], actual
     end
 
-    def test_merge_classes_gracefully_handles_nil_elements_in_arrays
-      assert_equal %w[a b c], Utils.merge_classes(['a', nil], ['b', 'c'])
+    def test_merge_classes_with_arrays_and_strings
+      actual = Utils.merge_classes ['a', 'b'], 'b c'
+      assert_equal ['a', 'b', 'c'], actual
     end
 
-    def test_merge_classes_available_as_instance_method_when_utils_is_included
+    def test_merge_classes_with_one_nil_argument
+      actual = Utils.merge_classes 'a b', nil
+      assert_equal ['a', 'b'], actual
+
+      actual = Utils.merge_classes nil, 'a b'
+      assert_equal ['a', 'b'], actual
+    end
+
+    def test_merge_classes_with_two_nil_arguments
+      actual = Utils.merge_classes nil, nil
+      assert_nil actual
+    end
+
+    def test_merge_classes_is_module_function
       cls = Class.new do
         include Utils
         public :merge_classes

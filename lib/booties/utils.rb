@@ -9,6 +9,7 @@ module Booties
     end
 
     def merge_classes(a, b)
+      return nil if a.nil? && b.nil?
       Array(a).compact.flat_map(&:split) | Array(b).compact.flat_map(&:split)
     end
 
