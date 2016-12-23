@@ -21,15 +21,8 @@ And then execute:
 $ bundle
 ```
 
-Make the helpers available throughout your application by adding the following
-line to your ApplicationController:
-
-```ruby
-helper Booties::Engine.helpers
-```
-
-Finally, you need to make sure you include Bootstrap in your application. The
-way you accomplish this is left up to you, but one easy way to do this is to
+You also need to make sure you include Bootstrap in your application. The way
+you accomplish this is left up to you, but one easy way to do this is to
 include the [bootstrap-sass](https://github.com/twbs/bootstrap-sass) gem.
 
 ## Helpers
