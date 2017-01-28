@@ -59,6 +59,14 @@ module Booties
         popover('Link text', content: CONTENT, trigger: :focus)
     end
 
+    def test_popover_with_container
+      expected = content_tag :a, 'Link text',
+        role: 'button',
+        data: { toggle: 'popover', content: CONTENT, container: 'body', }
+      assert_equal expected,
+        popover('Link text', content: CONTENT, container: 'body')
+    end
+
     def test_popover_with_custom_tabindex
       expected = content_tag :a, 'Link text',
         tabindex: 42,

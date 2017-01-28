@@ -3,9 +3,11 @@ module Booties
     PLACEMENTS = [:left, :right, :top, :bottom, ]
 
     def validate_placement!(position)
-      PLACEMENTS.include? position or raise ArgumentError,
-        "invalid placement: #{position.inspect}, " \
-        'valid placements are :left, :right, :top, :bottom'
+      unless PLACEMENTS.include?(position.to_sym)
+        raise ArgumentError, "invalid placement: #{position.inspect}, " \
+          'valid placements are :left, :right, :top, :bottom'
+      end
+      position
     end
 
     def merge_classes(a, b)
