@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1'
 
   #s.add_dependency "rails", "~> 5.0.0", ">= 5.0.0.1"
-  s.add_dependency 'rails', '>= 4.1', '< 5.1'
+  s.add_dependency 'rails', '>= 4.1', '< 6'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'minitest', '~> 5.7'
