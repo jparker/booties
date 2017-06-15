@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'samples/buttons'
 
+  get 'samples/dropdowns'
+
   get 'samples/flags'
 
   get 'samples/modals'

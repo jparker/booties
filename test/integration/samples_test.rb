@@ -21,6 +21,15 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_select 'a.btn.btn-danger.btn-xs[data-method="delete"]', 'Bar'
   end
 
+  def test_dropdowns
+    get samples_dropdowns_url
+    assert_select 'a.dropdown-toggle[role="button"][data-toggle="dropdown"]',
+      'Foo'
+    assert_select 'ul.dropdown-menu' do
+      assert_select 'li', 'Foo'
+    end
+  end
+
   def test_flags
     get samples_flags_url
     assert_select 'span.label.label-default', 'Foo'

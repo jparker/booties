@@ -8,6 +8,9 @@ class SamplesController < ApplicationController
   def buttons
   end
 
+  def dropdowns
+  end
+
   def flags
   end
 
