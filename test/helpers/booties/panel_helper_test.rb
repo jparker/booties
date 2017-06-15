@@ -3,7 +3,7 @@ require 'minitest/mock'
 
 module Booties
   class PanelHelperTest < ActionView::TestCase
-    def test__panel_instantiates_a_new_Panel_and_calls_render
+    def test_panel_instantiates_a_new_Panel_and_calls_render
       panel_class = Minitest::Mock.new
       panel_instance = Minitest::Mock.new
 
@@ -16,7 +16,7 @@ module Booties
       panel_instance.verify
     end
 
-    def test__panel_instantiates_a_new_Panel_with_the_given_context
+    def test_panel_instantiates_a_new_Panel_with_the_given_context
       panel_class = Minitest::Mock.new
       panel_instance = Minitest::Mock.new
 
