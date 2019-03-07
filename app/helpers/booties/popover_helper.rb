@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module PopoverHelper
+  module PopoverHelper # :nodoc:
     include Utils
 
     ##
@@ -39,8 +41,18 @@ module Booties
     #     Link text
     #   <% end %>
     #   <button class="btn btn-default" type="button" data-toggle="popover" data-content="Lorem ipsum dolor sit amet." data-placement="top" data-container="body" data-trigger="focus" title="Lorem ipsum">Link text</button>
-    def popover(text = nil, tag: :a, container: nil, content:, title: nil, placement: nil, trigger: nil, **options, &block)
-      data = { toggle: 'popover', content: content, }
+
+    # rubocop:disable Metrics/MethodLength, Metrics/ParameterLists
+    def popover(text = nil,
+                tag: :a,
+                container: nil,
+                content:,
+                title: nil,
+                placement: nil,
+                trigger: nil,
+                **options,
+                &block)
+      data = { toggle: 'popover', content: content }
 
       data[:container] = container if container
       data[:placement] = validate_placement!(placement) if placement
@@ -57,5 +69,6 @@ module Booties
 
       content_tag tag, text, options, &block
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/ParameterLists
   end
 end

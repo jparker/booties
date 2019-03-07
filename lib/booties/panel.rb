@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 
 module Booties
-  class Panel
+  class Panel # :nodoc:
     include Utils
     extend Forwardable
 
     CSS_CLASSES = {
-      heading: 'panel-heading'.freeze,
-      title:   'panel-title'.freeze,
-      body:    'panel-body'.freeze,
-      footer:  'panel-footer'.freeze,
-    }
+      heading: 'panel-heading',
+      title: 'panel-title',
+      body: 'panel-body',
+      footer: 'panel-footer',
+    }.freeze
 
     ##
     # Instantiates a new Panel. Several helper methods like #content_tag will
-    # be delegated to +view_context+.
+    # be delegated to +template+.
     #
     # The optional +context+ argument can be passed in to specify the panel
     # context; otherwise, the context +:default+ is used.
@@ -26,15 +28,15 @@ module Booties
     #
     # Any additional options will be included as attributes on the top-level
     # panel container.
-    def initialize(view_context, context: :default, wrapper_tag: 'div', **options)
-      @view_context = view_context
-      @wrapper_tag  = wrapper_tag
-      @context      = context
+    def initialize(template, context: :default, wrapper_tag: 'div', **options)
+      @template    = template
+      @wrapper_tag = wrapper_tag
+      @context     = context
       # TODO: pass options to #render instead of constructor
-      @options      = options
+      @options     = options
     end
 
-    def_delegators :@view_context, :capture, :content_tag
+    def_delegators :@template, :capture, :content_tag
 
     ##
     # Renders the top-level div for the panel. +@context+ is used to specify
@@ -42,7 +44,8 @@ module Booties
     # object will be passed as a parameter to +block+.
     def render(&block)
       options = @options.dup
-      classes = merge_classes %W[panel panel-#@context], options.delete(:class)
+      classes = merge_classes %W[panel panel-#{@context}],
+                              options.delete(:class)
       content_tag @wrapper_tag, class: classes, **options do
         capture self, &block
       end
@@ -56,7 +59,7 @@ module Booties
     def heading(content = nil, class: nil, **options, &block)
       content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:heading],
-        binding.local_variable_get(:class)
+                                binding.local_variable_get(:class)
       content_tag :div, content, class: classes, **options
     end
 
@@ -68,7 +71,7 @@ module Booties
     def title(content = nil, class: nil, **options, &block)
       content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:title],
-        binding.local_variable_get(:class)
+                                binding.local_variable_get(:class)
       content_tag :h3, content, class: classes, **options
     end
 
@@ -80,7 +83,7 @@ module Booties
     def body(content = nil, class: nil, **options, &block)
       content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:body],
-        binding.local_variable_get(:class)
+                                binding.local_variable_get(:class)
       content_tag :div, content, class: classes, **options
     end
 
@@ -92,7 +95,7 @@ module Booties
     def footer(content = nil, class: nil, **options, &block)
       content ||= capture(&block)
       classes   = merge_classes CSS_CLASSES[:footer],
-        binding.local_variable_get(:class)
+                                binding.local_variable_get(:class)
       content_tag :div, content, class: classes, **options
     end
   end

@@ -1,0 +1,33 @@
+AllCops:
+  Exclude:
+    - 'test/dummy/**/*'
+    - 'bin/rails'
+  TargetRubyVersion: 2.3.0
+
+# Making tests conform to some of these metrics is more trouble than it's worth
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+Metrics/LineLength:
+  Exclude:
+    - 'test/helpers/**/*'
+    - 'test/integration/**/*'
+    - 'test/lib/**/*'
+  # Long comment lines are unavoidable because they show lots of example output
+  IgnoredPatterns:
+    - '^[[:space:]]*#'
+Metrics/MethodLength:
+  Exclude:
+    - 'test/integration/**/*'
+
+# This project has a lot of highly configurable view helpers that needs lots of parameters
+Metrics/ParameterLists:
+  Max: 8
+
+# Allow inline public, private, module_function, etc.
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+# Allow trailing comma in multiline hashes
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module BadgeHelper
+  module BadgeHelper # :nodoc:
     include Utils
 
     ##

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'stub_view'
 
@@ -11,52 +13,59 @@ module Booties
     end
 
     def teardown
-      I18n.backend  = @backend
+      I18n.backend = @backend
     end
 
     def test_render_renders_a_fading_modal_with_an_id_and_a_dialog
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal fade" id="foo"><div class="modal-dialog">' \
-        '<div class="modal-content"></div></div></div>'
-      assert_equal expected, modal.render {}
+                 '<div class="modal-content"></div></div></div>'
+      actual = modal.render {}
+      assert_equal expected, actual
     end
 
     def test_render_renders_a_non_fading_modal_when_fade_is_falsey
       modal = Modal.new @view_context, id: 'foo', fade: false
       expected = '<div class="modal" id="foo"><div class="modal-dialog">' \
-        '<div class="modal-content"></div></div></div>'
-      assert_equal expected, modal.render {}
+                 '<div class="modal-content"></div></div></div>'
+      actual = modal.render {}
+      assert_equal expected, actual
     end
 
     def test_render_passes_misc_options_to_outer_container
       modal = Modal.new @view_context, id: 'foo'
       expected = /<div class="modal fade foo" id="foo" data-bar="baz">/
-      assert_match expected, modal.render(class: 'foo', data: { bar: 'baz' }) {}
+      actual = modal.render(class: 'foo', data: { bar: 'baz' }) {}
+      assert_match expected, actual
     end
 
     def test_large_modal
       modal = Modal.new @view_context, id: 'foo', size: :large
       expected = /<div class="modal-dialog modal-lg">/
-      assert_match expected, modal.render {}
+      actual = modal.render {}
+      assert_match expected, actual
     end
 
     def test_small_modal
       modal = Modal.new @view_context, id: 'foo', size: :small
       expected = /<div class="modal-dialog modal-sm">/
-      assert_match expected, modal.render {}
+      actual = modal.render {}
+      assert_match expected, actual
     end
 
     def test_dialog_renders_a_modal_dialog_with_a_modal_content
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-dialog"><div class="modal-content">' \
-        '</div></div>'
-      assert_equal expected, modal.dialog {}
+                 '</div></div>'
+      actual = modal.dialog {}
+      assert_equal expected, actual
     end
 
     def test_content_renders_a_modal_content
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-content"></div>'
-      assert_equal expected, modal.content {}
+      actual = modal.content {}
+      assert_equal expected, actual
     end
 
     def test_content_yields_modal_to_block
@@ -71,16 +80,19 @@ module Booties
     def test_header_renders_a_modal_header_with_a_title_and_a_dismissal
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-header">' \
-        '<button class="close" data-dismiss="modal" type="button">&times;' \
-        '</button><h4 class="modal-title">content</h4></div>'
-      assert_equal expected, modal.header { 'content' }
+                 '<button class="close" data-dismiss="modal" type="button">' \
+                 '&times;' \
+                 '</button><h4 class="modal-title">content</h4></div>'
+      actual = modal.header { 'content' }
+      assert_equal expected, actual
     end
 
     def test_header_renders_a_modal_header_withouth_a_dismissal
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-header">' \
-        '<h4 class="modal-title">content</h4></div>'
-      assert_equal expected, modal.header(close: false) { 'content' }
+                 '<h4 class="modal-title">content</h4></div>'
+      actual = modal.header(close: false) { 'content' }
+      assert_equal expected, actual
     end
 
     def test_header_uses_html_dismissal
@@ -88,22 +100,24 @@ module Booties
       translations = {}
       I18n.backend = I18n::Backend::KeyValue.new translations
       I18n.backend.store_translations I18n.locale,
-        { booties: { modal: { dismiss_html: icon } } }
+                                      booties: { modal: { dismiss_html: icon } }
 
       modal = Modal.new @view_context, id: 'foo'
       expected = %r{<button class="close" data-dismiss="modal" type="button">#{icon}</button>}
-      assert_match expected, modal.header { 'content' }
+      actual = modal.header { 'content' }
+      assert_match expected, actual
     end
 
     def test_header_falls_back_on_non_html_dismissal
       translations = {}
       I18n.backend = I18n::Backend::KeyValue.new translations
       I18n.backend.store_translations I18n.locale,
-        { booties: { modal: { dismiss: 'close' } } }
+                                      booties: { modal: { dismiss: 'close' } }
 
       modal = Modal.new @view_context, id: 'foo'
       expected = %r{<button class="close" data-dismiss="modal" type="button">close</button>}
-      assert_match expected, modal.header { 'content' }
+      actual = modal.header { 'content' }
+      assert_match expected, actual
     end
 
     def test_header_falls_back_on_default_dismissal
@@ -112,59 +126,68 @@ module Booties
 
       modal = Modal.new @view_context, id: 'foo'
       expected = %r{<button class="close" data-dismiss="modal" type="button">&times;</button>}
-      assert_match expected, modal.header { 'content' }
+      actual = modal.header { 'content' }
+      assert_match expected, actual
     end
 
     def test_body_renders_a_modal_body
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-body">content</div>'
-      assert_equal expected, modal.body { 'content' }
+      actual = modal.body { 'content' }
+      assert_equal expected, actual
     end
 
     def test_footer_renders_a_modal_footer
       modal = Modal.new @view_context, id: 'foo'
       expected = '<div class="modal-footer">content</div>'
-      assert_equal expected, modal.footer { 'content' }
+      actual = modal.footer { 'content' }
+      assert_equal expected, actual
     end
 
     def test_title_renders_a_modal_title
       modal = Modal.new @view_context, id: 'foo'
       expected = '<h4 class="modal-title">content</h4>'
-      assert_equal expected, modal.title('content')
+      actual = modal.title('content')
+      assert_equal expected, actual
     end
 
     def test_title_accepts_content_as_a_block
       modal = Modal.new @view_context, id: 'foo'
       expected = '<h4 class="modal-title">content</h4>'
-      assert_equal expected, modal.title { 'content' }
+      actual = modal.title { 'content' }
+      assert_equal expected, actual
     end
 
     def test_dismiss_renders_a_dismiss_button
       modal = Modal.new @view_context, id: 'foo'
       expected = '<button class="close" data-dismiss="modal" type="button">' \
-        'content</button>'
-      assert_equal expected, modal.dismiss('content')
+                 'content</button>'
+      actual = modal.dismiss('content')
+      assert_equal expected, actual
     end
 
     def test_dismiss_accepts_content_as_a_block
       modal = Modal.new @view_context, id: 'foo'
       expected = '<button class="close" data-dismiss="modal" type="button">' \
-        'content</button>'
-      assert_equal expected, modal.dismiss { 'content' }
+                 'content</button>'
+      actual = modal.dismiss { 'content' }
+      assert_equal expected, actual
     end
 
     def test_dismiss_accepts_custom_class
       modal = Modal.new @view_context, id: 'foo'
       expected = '<button class="btn btn-default" data-dismiss="modal"' \
-       ' type="button">content</button>'
-      assert_equal expected, modal.dismiss('content', class: 'btn btn-default')
+                 ' type="button">content</button>'
+      actual = modal.dismiss('content', class: 'btn btn-default')
+      assert_equal expected, actual
     end
 
     def test_dismiss_accepts_custom_class_and_block
       modal = Modal.new @view_context, id: 'foo'
       expected = '<button class="btn btn-default" data-dismiss="modal"' \
-       ' type="button">content</button>'
-      assert_equal expected, modal.dismiss(class: 'btn btn-default') { 'content' }
+                 ' type="button">content</button>'
+      actual = modal.dismiss(class: 'btn btn-default') { 'content' }
+      assert_equal expected, actual
     end
   end
 end

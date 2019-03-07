@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module FlagHelper
+  module FlagHelper # :nodoc:
     include Utils
 
     ##
@@ -28,7 +30,7 @@ module Booties
     #   <span class="label label-default bar">foo</span>
     def flag(content = nil, context: :default, class: nil, **options, &block)
       classes = merge_classes %W[label label-#{context}],
-        binding.local_variable_get(:class)
+                              binding.local_variable_get(:class)
       options = { class: classes, **options }
 
       content_tag :span, content, options, &block

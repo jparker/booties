@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module ModalHelper
+  module ModalHelper # :nodoc:
     ##
     # Renders a modal dialog. The CSS id is provided by +id+. The fade effect
     # will be enabled by default, but it will be disabled if +fade+ is falsey.
@@ -29,6 +31,7 @@ module Booties
     #       <% end %>
     #     <% end %>
     #   <% end %>
+
     def modal(id, fade: true, size: nil, with: Modal, **options, &block)
       with.new(self, id: id, fade: fade, size: size).render(**options, &block)
     end

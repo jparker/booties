@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module ButtonHelper
+  module ButtonHelper # :nodoc:
     include Utils
 
     ##
@@ -21,13 +23,13 @@ module Booties
     #   <%= btn_link_to 'Sign out', destroy_user_session_path, context: :danger, class: 'btn-xs', method: :delete %>
     #
     #   <a href="/users/sign_out" class="btn btn-danger btn-xs" data-method="delete">Sign out</a>
-    def btn_link_to(name = nil, options = nil, html_options = nil, &block)
-      name, options, html_options = capture(&block), name, options if block_given?
-      html_options ||= {}
-      context = html_options.delete(:context) { :default }
-      html_options[:class] = \
-        merge_classes %W[btn btn-#{context}], html_options[:class]
-      link_to name, options, html_options
+    def btn_link_to(name_or_path, path = nil, context: :default, **opts, &block)
+      opts[:class] = merge_classes %W[btn btn-#{context}], opts[:class]
+      if block_given?
+        link_to name_or_path, opts, &block
+      else
+        link_to name_or_path, path, opts
+      end
     end
   end
 end

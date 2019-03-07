@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Booties
-  module Utils
-    PLACEMENTS = %i[left right top bottom]
+  module Utils # :nodoc:
+    PLACEMENTS = %i[left right top bottom].freeze
 
     def validate_placement!(position)
       unless PLACEMENTS.include?(position.to_sym)

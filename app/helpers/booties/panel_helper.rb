@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module PanelHelper
+  module PanelHelper # :nodoc:
     ##
     # Renders a panel. The defult panel context is +:default+ but can be
     # specified through +options+. The contents of the panel should be passed

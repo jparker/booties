@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module DropdownHelper
+  module DropdownHelper # :nodoc:
     include Utils
 
     ##
@@ -16,10 +18,12 @@ module Booties
     #   <% end %>
     def link_to_dropdown(class: nil, &block)
       classes = merge_classes binding.local_variable_get(:class),
-        'dropdown-toggle'
+                              'dropdown-toggle'
       text = capture(&block) + caret
-      link_to text, '#', class: classes, data: { toggle: 'dropdown' },
-        role: 'button'
+      link_to text, '#',
+              class: classes,
+              data: { toggle: 'dropdown' },
+              role: 'button'
     end
 
     ##
@@ -36,10 +40,13 @@ module Booties
     #   <% end %>
     def button_to_dropdown(context: :default, class: nil, &block)
       classes = merge_classes binding.local_variable_get(:class),
-        %W[btn btn-#{context} dropdown-toggle]
+                              %W[btn btn-#{context} dropdown-toggle]
       text = capture(&block) + caret
-      button_tag text, name: nil, class: classes,
-        data: { toggle: 'dropdown' }, type: 'button'
+      button_tag text,
+                 name: nil,
+                 class: classes,
+                 data: { toggle: 'dropdown' },
+                 type: 'button'
     end
 
     ##

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class NavigationTest < ActionDispatch::IntegrationTest
@@ -23,8 +25,7 @@ class NavigationTest < ActionDispatch::IntegrationTest
 
   def test_dropdowns
     get samples_dropdowns_url
-    assert_select 'a.dropdown-toggle[role="button"][data-toggle="dropdown"]',
-      'Foo'
+    assert_select 'a.dropdown-toggle[role="button"][data-toggle="dropdown"]', 'Foo'
     assert_select 'ul.dropdown-menu' do
       assert_select 'li', 'Foo'
     end

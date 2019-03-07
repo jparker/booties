@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 
 module Booties
-  class Modal
+  class Modal # :nodoc:
     include Utils
     extend Forwardable
 
-    DEFAULT_DISMISSAL = '&times;'.freeze
+    DEFAULT_DISMISSAL = '&times;'.html_safe
     MODAL_SIZE        = { small: 'modal-sm', large: 'modal-lg' }.freeze
 
     ##
@@ -22,7 +24,7 @@ module Booties
     end
 
     def_delegators :@view_context, :button_tag, :capture, :content_tag,
-      :raw, :t, :translate
+                   :raw, :t, :translate
 
     ##
     # Renders the top-level div for the modal dialog. +block+ is passed to
@@ -70,8 +72,8 @@ module Booties
       content_tag :div, class: 'modal-header' do
         if close
           dismissal = t :'booties.modal.dismiss_html',
-            default: [:'booties.modal.dismiss', raw(DEFAULT_DISMISSAL)]
-          dismiss(dismissal) << title(&block)
+                        default: [:'booties.modal.dismiss', DEFAULT_DISMISSAL]
+          dismiss(dismissal) + title(&block)
         else
           title(&block)
         end

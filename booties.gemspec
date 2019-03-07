@@ -1,4 +1,6 @@
-$:.push File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
 require 'booties/version'
@@ -14,7 +16,12 @@ Gem::Specification.new do |s|
   s.description = 'Rails view helpers for Twitter Bootstrap.'
   s.license     = 'MIT'
 
-  s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  s.files = Dir[
+    '{app,config,db,lib}/**/*',
+    'MIT-LICENSE',
+    'Rakefile',
+    'README.md'
+  ]
   s.test_files = Dir['test/**/*']
 
   s.required_ruby_version = '>= 2.3'
@@ -24,4 +31,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest', '~> 5.7'
   s.add_development_dependency 'minitest-focus'
   s.add_development_dependency 'pry-rails'
+  s.add_development_dependency 'rubocop'
 end

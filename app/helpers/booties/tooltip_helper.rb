@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module TooltipHelper
+  module TooltipHelper # :nodoc:
     include Utils
 
     ##
@@ -40,9 +42,16 @@ module Booties
     #     This has a tooltip.
     #   <% end %>
     #   <span data-toggle="tooltip" title="This is a tooltip" class="tooltip">This has a tooltip.</span>
-    def tooltip(content = nil, title:, placement: nil, wrapper_tag: :span, **options, &block)
+    def tooltip(content = nil,
+                title:,
+                placement: nil,
+                wrapper_tag: :span,
+                **options,
+                &block)
+
       data = { toggle: 'tooltip' }
       if placement
+        # TODO: Is it worth the effort to be this defensive?
         validate_placement! placement
         data[:placement] = placement
       end

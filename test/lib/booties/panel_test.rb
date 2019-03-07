@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'stub_view'
 
@@ -9,25 +11,29 @@ module Booties
 
     def test_default_panel
       expected = '<div class="panel panel-default">content</div>'
-      assert_equal expected, panel.render { 'content' }
+      actual = panel.render { 'content' }
+      assert_equal expected, actual
     end
 
     def test_panel_with_custom_context
       panel = Panel.new @view_context, context: :primary
       expected = '<div class="panel panel-primary">content</div>'
-      assert_equal expected, panel.render { 'content' }
+      actual = panel.render { 'content' }
+      assert_equal expected, actual
     end
 
     def test_render_panel_with_custom_wrapper_tag
       panel = Panel.new @view_context, wrapper_tag: 'fieldset'
       expected = '<fieldset class="panel panel-default"></fieldset>'
-      assert_equal expected, panel.render {}
+      actual = panel.render {}
+      assert_equal expected, actual
     end
 
     def test_optional_arguments_to_panel
       panel = Panel.new @view_context, id: 'foo', class: 'bar'
       expected = '<div class="panel panel-default bar" id="foo"></div>'
-      assert_equal expected, panel.render {}
+      actual = panel.render {}
+      assert_equal expected, actual
     end
 
     def test_render_yields_panel_to_block
@@ -39,62 +45,74 @@ module Booties
 
     def test_panel_heading
       expected = '<div class="panel-heading">content</div>'
-      assert_equal expected, panel.heading('content')
+      actual = panel.heading('content')
+      assert_equal expected, actual
     end
 
     def test_panel_heading_accepts_block
       expected = '<div class="panel-heading">content</div>'
-      assert_equal expected, panel.heading { 'content' }
+      actual = panel.heading { 'content' }
+      assert_equal expected, actual
     end
 
     def test_panel_heading_with_optional_arguments
       expected = '<div class="panel-heading foo" id="bar"></div>'
-      assert_equal expected, panel.heading('', class: 'foo', id: 'bar')
+      actual = panel.heading('', class: 'foo', id: 'bar')
+      assert_equal expected, actual
     end
 
     def test_panel_title
       expected = '<h3 class="panel-title">content</h3>'
-      assert_equal expected, panel.title('content')
+      actual = panel.title('content')
+      assert_equal expected, actual
     end
 
     def test_panel_title_accepts_block
       expected = '<h3 class="panel-title">content</h3>'
-      assert_equal expected, panel.title { 'content' }
+      actual = panel.title { 'content' }
+      assert_equal expected, actual
     end
 
     def test_panel_title_with_optional_arguments
       expected = '<h3 class="panel-title foo" id="bar"></h3>'
-      assert_equal expected, panel.title('', class: 'foo', id: 'bar')
+      actual = panel.title('', class: 'foo', id: 'bar')
+      assert_equal expected, actual
     end
 
     def test_panel_body
       expected = '<div class="panel-body">content</div>'
-      assert_equal expected, panel.body('content')
+      actual = panel.body('content')
+      assert_equal expected, actual
     end
 
     def test_panel_body_accepts_block
       expected = '<div class="panel-body">content</div>'
-      assert_equal expected, panel.body { 'content' }
+      actual = panel.body { 'content' }
+      assert_equal expected, actual
     end
 
     def test_panel_body_with_optional_arguments
       expected = '<div class="panel-body foo" id="bar"></div>'
-      assert_equal expected, panel.body('', class: 'foo', id: 'bar')
+      actual = panel.body('', class: 'foo', id: 'bar')
+      assert_equal expected, actual
     end
 
     def test_panel_footer
       expected = '<div class="panel-footer">content</div>'
-      assert_equal expected, panel.footer('content')
+      actual = panel.footer('content')
+      assert_equal expected, actual
     end
 
     def test_panel_footer_accepts_block
       expected = '<div class="panel-footer">content</div>'
-      assert_equal expected, panel.footer { 'content' }
+      actual = panel.footer { 'content' }
+      assert_equal expected, actual
     end
 
     def test_panel_footer_with_optional_arguments
       expected = '<div class="panel-footer foo" id="bar"></div>'
-      assert_equal expected, panel.footer('', class: 'foo', id: 'bar')
+      actual = panel.footer('', class: 'foo', id: 'bar')
+      assert_equal expected, actual
     end
 
     private

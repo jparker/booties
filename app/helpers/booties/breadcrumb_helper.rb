@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Booties
-  module BreadcrumbHelper
+  module BreadcrumbHelper # :nodoc:
     ##
     # Renders an ol tag with the "breadcrumb" class and fills it with the
     # content of the block.
