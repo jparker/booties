@@ -10,9 +10,12 @@ module Booties
       position
     end
 
-    def merge_classes(a, b)
-      return nil if a.nil? && b.nil?
-      Array(a).compact.flat_map(&:split) | Array(b).compact.flat_map(&:split)
+    def merge_classes(*sets)
+      return nil if sets.empty? || sets.all?(&:nil?)
+
+      sets.reduce([]) do |superset, subset|
+        superset | Array(subset).compact.flat_map(&:split)
+      end
     end
 
     module_function :merge_classes
