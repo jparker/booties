@@ -1,6 +1,6 @@
 module Booties
   module Utils
-    PLACEMENTS = [:left, :right, :top, :bottom, ]
+    PLACEMENTS = %i[left right top bottom]
 
     def validate_placement!(position)
       unless PLACEMENTS.include?(position.to_sym)

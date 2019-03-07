@@ -39,23 +39,23 @@ module Booties
     #     Link text
     #   <% end %>
     #   <button class="btn btn-default" type="button" data-toggle="popover" data-content="Lorem ipsum dolor sit amet." data-placement="top" data-container="body" data-trigger="focus" title="Lorem ipsum">Link text</button>
-    def popover(text = nil, tag: :a, container: nil, content:, title: nil, placement: nil, trigger: nil, **html_options, &block)
+    def popover(text = nil, tag: :a, container: nil, content:, title: nil, placement: nil, trigger: nil, **options, &block)
       data = { toggle: 'popover', content: content, }
 
       data[:container] = container if container
       data[:placement] = validate_placement!(placement) if placement
 
       if trigger
-        html_options[:tabindex] ||= 10
+        options[:tabindex] ||= 10
         data[:trigger] = 'focus'
       end
 
-      role_or_type = tag == :button ? :type : :role
-      html_options[role_or_type] ||= 'button'
-      html_options[:data] ||= {}
-      html_options[:data].update data
+      options[tag == :button ? :type : :role] ||= 'button'
+      options[:title] = title
+      options[:data] ||= {}
+      options[:data].update data
 
-      content_tag tag, text, **html_options, title: title, &block
+      content_tag tag, text, options, &block
     end
   end
 end

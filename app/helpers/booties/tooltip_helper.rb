@@ -41,18 +41,14 @@ module Booties
     #   <% end %>
     #   <span data-toggle="tooltip" title="This is a tooltip" class="tooltip">This has a tooltip.</span>
     def tooltip(content = nil, title:, placement: nil, wrapper_tag: :span, **options, &block)
-      data = { toggle: 'tooltip', }
-
+      data = { toggle: 'tooltip' }
       if placement
         validate_placement! placement
         data[:placement] = placement
       end
+      options = { data: data, title: title, **options }
 
-      content_tag wrapper_tag, content,
-                  data: data,
-                  title: title,
-                  **options,
-                  &block
+      content_tag wrapper_tag, content, options, &block
     end
   end
 end
