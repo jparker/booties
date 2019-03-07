@@ -9,7 +9,7 @@ module Booties
     end
 
     def test_merge_classes_with_strings
-      assert_equal %w[a b c], Utils.merge_classes('a b', 'b c')
+      assert_equal %w[a b c], Utils.merge_classes('a b ', ' b c')
     end
 
     def test_merge_classes_with_arrays_and_strings
@@ -21,7 +21,7 @@ module Booties
       assert_equal %w[a b], Utils.merge_classes(nil, 'a b')
     end
 
-    def test_merge_classes_with_two_nil_arguments
+    def test_merge_classes_with_nil_arguments
       assert_nil Utils.merge_classes(nil, nil)
     end
 

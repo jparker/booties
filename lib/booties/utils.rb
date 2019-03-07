@@ -3,7 +3,7 @@
 module Booties
   module Utils # :nodoc:
     def merge_classes(*sets)
-      return nil if sets.empty? || sets.all?(&:nil?)
+      return nil if sets.all?(&:nil?)
 
       sets.reduce([]) do |superset, subset|
         superset | Array(subset).compact.flat_map(&:split)
