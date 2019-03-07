@@ -35,14 +35,6 @@ module Booties
       assert_equal expected, actual
     end
 
-    def test_popover_with_invalid_placement
-      e = assert_raises(ArgumentError) do
-        popover content: 'Lorem ipsum', placement: :bogus
-      end
-      assert_equal 'invalid placement: :bogus, ' \
-                   'valid placements are :left, :right, :top, :bottom', e.message
-    end
-
     def test_popover_with_trigger
       expected = '<a tabindex="10" role="button" data-toggle="popover" data-content="Lorem ipsum" data-trigger="focus">Link text</a>'
       actual = popover('Link text', content: 'Lorem ipsum', trigger: :focus)

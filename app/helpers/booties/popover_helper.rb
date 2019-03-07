@@ -52,18 +52,16 @@ module Booties
                 trigger: nil,
                 **options,
                 &block)
-      data = { toggle: 'popover', content: content }
-
-      data[:container] = container if container
-      data[:placement] = validate_placement!(placement) if placement
-
-      if trigger
-        options[:tabindex] ||= 10
-        data[:trigger] = 'focus'
-      end
-
+      data = {
+        toggle: 'popover',
+        content: content,
+        container: container,
+        placement: placement,
+        trigger: trigger,
+      }
       options[tag == :button ? :type : :role] ||= 'button'
       options[:title] = title
+      options[:tabindex] ||= 10 if trigger
       options[:data] ||= {}
       options[:data].update data
 

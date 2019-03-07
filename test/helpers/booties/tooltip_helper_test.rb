@@ -14,31 +14,10 @@ module Booties
                        tooltip(title: 'required') { '*' }
     end
 
-    def test_tooltip_with_bottom_placement
+    def test_tooltip_with_custom_placement
       assert_dom_equal \
         '<span title="required" data-toggle="tooltip" data-placement="bottom">*</span>',
         tooltip('*', title: 'required', placement: :bottom)
-    end
-
-    def test_tooltip_with_right_placement
-      assert_dom_equal \
-        '<span title="required" data-toggle="tooltip" data-placement="right">*</span>',
-        tooltip('*', title: 'required', placement: :right)
-    end
-
-    def test_tooltip_with_left_placement
-      assert_dom_equal \
-        '<span title="required" data-toggle="tooltip" data-placement="left">*</span>',
-        tooltip('*', title: 'required', placement: :left)
-    end
-
-    def test_tooltip_with_unrecognized_placement
-      e = assert_raises ArgumentError do
-        tooltip '*', title: 'required', placement: :bogus
-      end
-      assert_equal \
-        'invalid placement: :bogus, valid placements are :left, :right, :top, :bottom',
-        e.message
     end
 
     def test_tooltip_renders_tooltip_using_alternative_wrapper_tag

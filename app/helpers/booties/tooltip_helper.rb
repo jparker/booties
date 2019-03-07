@@ -49,12 +49,7 @@ module Booties
                 **options,
                 &block)
 
-      data = { toggle: 'tooltip' }
-      if placement
-        # TODO: Is it worth the effort to be this defensive?
-        validate_placement! placement
-        data[:placement] = placement
-      end
+      data = { toggle: 'tooltip', placement: placement }
       options = { data: data, title: title, **options }
 
       content_tag wrapper_tag, content, options, &block
