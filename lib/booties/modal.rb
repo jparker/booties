@@ -12,19 +12,18 @@ module Booties
 
     ##
     # Instantiates a new Modal. Several helper methods like #content_tag will
-    # be delegated to +view_context+. The required keyword +id+ will be used as
+    # be delegated to +template+. The required keyword +id+ will be used as
     # the DOM ID of the modal element. By default, the modal will exhibit
     # fading behavior, but this can be disabled by setting +fade+ to a falsey
     # value.
-    def initialize(view_context, id:, fade: true, size: nil)
-      @view_context = view_context
-      @id           = id
-      @fade         = fade ? 'fade' : nil
-      @size         = MODAL_SIZE[size]
+    def initialize(template, id:, fade: true, size: nil)
+      @template = template
+      @id = id
+      @fade = fade ? 'fade' : nil
+      @size = MODAL_SIZE[size]
     end
 
-    def_delegators :@view_context, :button_tag, :capture, :content_tag,
-                   :raw, :t, :translate
+    delegate %i[button_tag capture content_tag t] => :@template
 
     ##
     # Renders the top-level div for the modal dialog. +block+ is passed to

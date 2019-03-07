@@ -36,7 +36,7 @@ module Booties
       @options     = options
     end
 
-    def_delegators :@template, :capture, :content_tag
+    delegate %i[capture content_tag] => :@template
 
     ##
     # Renders the top-level div for the panel. +@context+ is used to specify
