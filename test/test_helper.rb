@@ -5,11 +5,7 @@ require File.expand_path("../../test/dummy/config/environment.rb", __FILE__)
 require "rails/test_help"
 
 require 'pry'
-
 require 'minitest/focus'
-require 'minitest/reporters'
-
-Minitest::Reporters.use!
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.
