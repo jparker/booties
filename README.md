@@ -5,8 +5,10 @@
 Booties provides a variety of helpers for using
 [Twitter Bootstrap](http://getbootstrap.com/) within a Rails application.
 
-NB: This is the Rails 5 development branch. There will likely be no visible
-change in syntax or behavior, but some of the tests had to be rewritten.
+*WARNING* This plugin has not kept pace with Bootstrap development. It was
+built for Bootstrap v3. It has not been updated for v4.
+
+*WARNING* This is branch is getting Rails 6 support ironed out.
 
 ## Installation
 
@@ -19,6 +21,17 @@ gem 'booties'
 And then execute:
 ```bash
 $ bundle
+```
+
+Include `Booties::ApplicationHelper`. Including it into `ApplicationHelper`
+should be sufficient.
+
+```ruby
+# app/helpers/application_helper.rb
+
+module ApplicationHelper
+  include Booties::ApplicationHelper
+end
 ```
 
 You also need to make sure you include Bootstrap in your application. The way
